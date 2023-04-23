@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Интернет-магазин</title>
+</head> 
+<body>
+  <div id="container-table"></div>
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+
+  <script src="Appliances.js"></script>
+  <link rel="stylesheet" type="text/css" href="Appliances.css" />
+
+  <script>
+    var appliancesText = 'Магазин бытовой техники';
+    var appliancesArray = [ 
+      {nameTH:'Название', costTH: 'Стоимость, руб.', fotoTH: 'Фото', countTH: 'Количество', id: 1},
+      {nameTD:'духовой шкаф', costTD: 1200, fotoTD: 'images/Oven.webp', countTD: 2, model: 'HBA534EB0'},
+      {nameTD:'посудомоечная машина', costTD: 1500, fotoTD: 'images/Dishwasher.webp', countTD: 1, model: 'SPV2IKX10E'},
+      {nameTD:'кофемашина', costTD: 2500, fotoTD: 'images/Сoffee-machine.webp', countTD: 9, model: 'TP501R09'},
+      {nameTD:'cтиральная машина', costTD: 2500, fotoTD: 'images/Washing-machine.webp', countTD: 6, model: 'WAU28T0FPL'}
+    ];
+
+    ReactDOM.render (
+      React.createElement(Appliances, 
+      {caption: appliancesText, products: appliancesArray}),
+      document.getElementById('container-table')
+    )
+  </script>
+
+</body> 
+</html>

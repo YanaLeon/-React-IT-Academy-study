@@ -1,0 +1,14 @@
+.AppliancesTH {
+    border: solid gray 3px
+}
+.AppliancesTD {
+    border: solid gray 3px;
+    text-align: center;
+}
+.AppliancesTable {
+    border: solid gray 3px;
+}
+.Foto {
+    width: 100px;
+    height: 100px;
+}
