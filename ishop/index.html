@@ -15,8 +15,10 @@
 
   <script>
     var appliancesText = 'Магазин бытовой техники';
-    var appliancesArray = [ 
-      {nameTH:'Название', costTH: 'Стоимость, руб.', fotoTH: 'Фото', countTH: 'Количество', id: 1},
+    var appliancesHeaderArray = [ 
+      {nameTH:'Название', costTH: 'Стоимость, руб.', fotoTH: 'Фото', countTH: 'Количество', id: 1}
+    ];
+    var appliancesArray = [
       {nameTD:'духовой шкаф', costTD: 1200, fotoTD: 'images/Oven.webp', countTD: 2, model: 'HBA534EB0'},
       {nameTD:'посудомоечная машина', costTD: 1500, fotoTD: 'images/Dishwasher.webp', countTD: 1, model: 'SPV2IKX10E'},
       {nameTD:'кофемашина', costTD: 2500, fotoTD: 'images/Сoffee-machine.webp', countTD: 9, model: 'TP501R09'},
@@ -25,7 +27,7 @@
 
     ReactDOM.render (
       React.createElement(Appliances, 
-      {caption: appliancesText, products: appliancesArray}),
+      {caption: appliancesText, header: appliancesHeaderArray, products: appliancesArray}),
       document.getElementById('container-table')
     )
   </script>
