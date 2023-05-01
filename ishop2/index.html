@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+</head>
+<body>
+    <table id="container" style="border-collapse: collapse"></table> 
+
+    <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+    
+    <script src="Store.js"></script>
+    <link rel="stylesheet" type="text/css" href="Store.css" />
+
+    <script src="Product.js"></script>
+    <link rel="stylesheet" type="text/css" href="Product.css" />
+    
+    <script>
+        var storeArray = [ 
+          {name:'Name', cost: 'Price', url: 'URL', quantity: 'Quantity', control: 'Control', id: 1}
+        ];
+        var productsArray = [
+          {name:'oven', cost: 1200, url: 'https://catalog.onliner.by', quantity: 2, control: 'Delete', code: 1},
+          {name:'dishwasher', cost: 1500, url: 'https://tovar.by', quantity: 1, control: 'Delete', code: 2},
+          {name:'coffee machine', cost: 2500, url: 'https://tex.by', quantity: 2, control: 'Delete', code: 3},
+          {name:'washing machine', cost: 2500, url: 'https://product.by',  quantity: 6, control: 'Delete', code: 4}
+        ];
+    
+        ReactDOM.render (
+          React.createElement(Store, 
+          {store: storeArray, products: productsArray}),
+          document.getElementById('container')
+        )
+      </script>
+</body>
+</html>
