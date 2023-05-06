@@ -15,10 +15,15 @@ var Store = React.createClass({
       };
     },
   
-    productDelete: function(name) {
+    productDelete: function(code) {
       var answer = confirm ('Хотите удалить товар? Если да нажмите "ОК", если нет нажмите "Отмена"');
       if (answer) {
-        this.setState( {deleteProduct: name} );
+        this.setState( {deleteProduct: code} );
+        this.setState( {products: this.state.products.filter((element) => {
+            if (element.code !== code) {
+                return element;
+            }
+        })} );
       }
     },
 
@@ -27,13 +32,6 @@ var Store = React.createClass({
     },
 
     render: function() {
-        if (this.state.deleteProduct) {
-            this.state.products = this.state.products.filter((element) => {
-                if (element.name !== this.state.deleteProduct) {
-                    return element;
-                }
-            })
-        } 
         var storeCode = this.props.store.map(element => {
             return React.DOM.tr({key: element.id},
                 React.DOM.th({className:'Store'}, element.name),
@@ -52,6 +50,7 @@ var Store = React.createClass({
                 url: element.url, 
                 quantity: element.quantity,
                 control: element.control,
+                code: element.code,
                 cbProductDelete: this.productDelete,
                 cbColorProduct: this.colorProduct,
                 colorProduct: this.state.colorProduct})

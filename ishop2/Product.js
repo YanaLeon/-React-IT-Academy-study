@@ -8,13 +8,14 @@ var Product = React.createClass({
       url: React.PropTypes.string.isRequired,
       quantity: React.PropTypes.number.isRequired,
       control: React.PropTypes.string.isRequired,
+      code: React.PropTypes.number.isRequired,
       cbProductDelete: React.PropTypes.func.isRequired,
       cbColorProduct: React.PropTypes.func.isRequired,
       colorProduct: React.PropTypes.any
     },
 
     deleteProduct: function () {
-        this.props.cbProductDelete(this.props.name);
+        this.props.cbProductDelete(this.props.code);
         
     },
 
