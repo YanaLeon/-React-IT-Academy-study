@@ -14,22 +14,23 @@ var Product = React.createClass({
       colorProduct: React.PropTypes.any
     },
 
-    deleteProduct: function () {
+    deleteProduct: function (eo) {
+        eo.stopPropagation();
         this.props.cbProductDelete(this.props.code);
         
     },
 
     colorProduct: function () {
-        this.props.cbColorProduct(this.props.name);
+        this.props.cbColorProduct(this.props.code);
     },
 
     render: function() {
 
-        return React.DOM.tr({style:{backgroundColor:(this.props.colorProduct === this.props.name)?'orange':'white'}},
-            React.DOM.td({onClick: this.colorProduct, className: 'Product'}, this.props.name),
-            React.DOM.td({onClick: this.colorProduct, className: 'Product'}, this.props.cost),
-            React.DOM.td({onClick: this.colorProduct, className: 'Product'}, this.props.url),
-            React.DOM.td({onClick: this.colorProduct, className: 'Product'}, this.props.quantity),
+        return React.DOM.tr({onClick: this.colorProduct, style:{backgroundColor:(this.props.colorProduct === this.props.code)?'orange':'white'}},
+            React.DOM.td({className: 'Product'}, this.props.name),
+            React.DOM.td({className: 'Product'}, this.props.cost),
+            React.DOM.td({className: 'Product'}, this.props.url),
+            React.DOM.td({className: 'Product'}, this.props.quantity),
             React.DOM.td(null, 
                 React.DOM.input ({type:'button', value: this.props.control, className: 'Product', onClick: this.deleteProduct})
             ),

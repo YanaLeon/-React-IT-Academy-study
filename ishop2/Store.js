@@ -27,8 +27,8 @@ var Store = React.createClass({
       }
     },
 
-    colorProduct: function (name) {
-        this.setState( {colorProduct: name} );
+    colorProduct: function (code) {
+        this.setState( {colorProduct: code} );
     },
 
     render: function() {

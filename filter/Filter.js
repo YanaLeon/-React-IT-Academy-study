@@ -8,40 +8,38 @@ var Filter = React.createClass({
 
     getInitialState: function() {
         return {
-          checkboxCheck: false,
-          filterText: ''
+            words: this.props.words,
+            checkboxCheck: false,
+            filterText: ''
         };
     },
 
     sortArray: function (eo) {
-        this.setState( {checkboxCheck: eo.target.checked});
+        this.setState( {checkboxCheck: eo.target.checked}, this.changeWords);
     },
 
     filterArray: function (eo) {
-        this.setState( {filterText: eo.target.value});
+        this.setState( {filterText: eo.target.value}, this.changeWords);
     },
 
     resetFilter: function () {
-        this.setState( {checkboxCheck: false, filterText: ''});
+        this.setState( {checkboxCheck: false, filterText: ''}, this.changeWords);
+    },
+
+    changeWords: function () {
+        var array = this.props.words.slice();
+        if (this.state.filterText !== '') {
+            array = array.filter(element => element.includes(this.state.filterText))
+        };
+        if (this.state.checkboxCheck) {
+            array.sort();
+        }
+        this.setState({words: array})
     },
 
     render: function() {
-        var array;
-        if (this.state.checkboxCheck) {
-            array = this.props.words.slice().sort();
-        } else {
-            array = this.props.words;
-        }
-
-        if (this.state.filterText !== '') {
-            array = array.filter(element => {
-                if (element.includes(this.state.filterText)) {
-                    return element;
-                }
-            })
-        };
         
-        var wordsCode = array.map( (element, index) => {
+        var wordsCode = this.state.words.map( (element, index) => {
             return React.DOM.div({key: index}, 
                 React.DOM.span(null, element)
             )
