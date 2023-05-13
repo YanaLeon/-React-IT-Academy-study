@@ -4,8 +4,8 @@
   "description": "блок голосования",
   "main": "App.js",
   "scripts": {
-    "build": ".\\node_modules\\.bin\\webpack",
-    "start": ".\\node_modules\\.bin\\lite-server"
+    "build": "./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/lite-server"
   },
   "author": "",
   "license": "ISC",
