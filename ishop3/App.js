@@ -9,6 +9,6 @@ let storeArray = [
 let productsArray = require('./products.json');
 
 ReactDOM.render(
-  React.createElement(Store, {store: storeArray, products: productsArray}), 
+    <Store store={storeArray} products={productsArray}></Store>,
   document.getElementById('container') 
 );

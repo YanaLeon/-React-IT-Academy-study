@@ -1,5 +1,12 @@
 .Store {
     border: solid gray 3px
+}
+.Info {
+    font-weight: 900;
+    font-size: 25px;
+}
+.Error {
+    color: red;
 }.Product {
     border: solid gray 3px
 }

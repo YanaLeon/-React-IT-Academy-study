@@ -1,6 +1,6 @@
 [
-    {"name": "oven", "cost": 1200, "url": "https://catalog.onliner.by", "quantity": 2, "control": "Delete", "code": 1},
-    {"name": "dishwasher", "cost": 1500, "url": "https://tovar.by", "quantity": 1, "control": "Delete", "code": 2},
-    {"name": "coffee machine", "cost": 2500, "url": "https://tex.by", "quantity": 2, "control": "Delete", "code": 3},
-    {"name": "washing machine", "cost": 2500, "url": "https://product.by",  "quantity": 6, "control": "Delete", "code": 4}
+    {"name": "oven", "cost": 1200, "url": "https://catalog.onliner.by", "quantity": 2, "controlEd": "Edit", "control": "Delete", "code": 1},
+    {"name": "dishwasher", "cost": 1500, "url": "https://tovar.by", "quantity": 1, "controlEd": "Edit", "control": "Delete", "code": 2},
+    {"name": "coffee machine", "cost": 2500, "url": "https://tex.by", "quantity": 2, "controlEd": "Edit", "control": "Delete", "code": 3},
+    {"name": "washing machine", "cost": 2500, "url": "https://product.by",  "quantity": 6, "controlEd": "Edit", "control": "Delete", "code": 4}
 ]
