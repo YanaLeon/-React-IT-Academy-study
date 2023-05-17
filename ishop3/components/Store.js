@@ -116,21 +116,21 @@ class Store extends React.Component {
 
     let productCode = this.state.products.map(element => {
       return <Product key={element.code} 
-      name={element.name} 
-      cost={element.cost} 
-      url={element.url} 
-      quantity={element.quantity} 
-      controlEd={element.controlEd} 
-      control={element.control} 
-      code={element.code} 
-      cbProductDelete={this.productDelete} 
-      cbColorProduct={this.colorProduct} 
-      colorProduct={this.state.colorProduct} 
-      cbEditProduct={this.edit}
-      editStart={this.state.editStart}
-      edit={this.state.edit}
-      add={this.state.add}/>
-    });
+                      name={element.name} 
+                      cost={element.cost} 
+                      url={element.url} 
+                      quantity={element.quantity} 
+                      controlEd={element.controlEd} 
+                      control={element.control} 
+                      code={element.code} 
+                      cbProductDelete={this.productDelete} 
+                      cbColorProduct={this.colorProduct} 
+                      colorProduct={this.state.colorProduct} 
+                      cbEditProduct={this.edit}
+                      editStart={this.state.editStart}
+                      edit={this.state.edit}
+                      add={this.state.add}></Product>
+      });
 
     let add = <tr>
                 <td>
@@ -138,50 +138,9 @@ class Store extends React.Component {
                 </td>
               </tr>;
 
-    let info = this.state.products.map(element => {
-      if(this.state.colorProduct === element.code) {
-        return <Fragment key={element.code}>
-                   <tr className='Info'><td colSpan='2'>{element.name}</td></tr>
-                   <tr><td>{element.name}</td></tr>
-                   <tr><td>{'Price:'}{element.cost}</td></tr>
-              </Fragment>        
-      }
-    });
-
     let information = <Information products={this.state.products}
-                                   colorProduct={this.state.colorProduct}></Information>;
-
-    let edit = this.state.products.map(element => {
-      if(this.state.edit === element.code) {
-        return <Fragment key={element.code}>
-                    <tr className='Info'><td colSpan='3'>Edit existing Product</td></tr>
-                    <tr>
-                      <td colSpan='2'>{'Name:'}</td>
-                      <td><input type='text' value={this.state.name} onChange={this.changeName}/></td>
-                      <td className='Error' colSpan='2'>{(this.state.errorName)? 'Please, fill the filed':null}</td>
-                    </tr>
-                    <tr>
-                      <td colSpan='2'>{'Price:'}</td>
-                      <td><input type='text' value={this.state.cost} onChange={this.changeCost}/></td>
-                      <td className='Error' colSpan='2'>{(this.state.errorCost)? 'Please, fill the filed':null}</td>
-                    </tr>
-                    <tr>
-                      <td colSpan='2'>{'URL:'}</td>
-                      <td><input type='text' value={this.state.url} onChange={this.changeURL}/></td>
-                      <td className='Error' colSpan='2'>{(this.state.errorURL)? 'Please, fill the filed':null}</td>
-                    </tr>
-                    <tr>
-                      <td colSpan='2'>{'Quantity:'}</td>
-                      <td><input type='text' value={this.state.quantity} onChange={this.changeQuantity}/></td>
-                      <td className='Error' colSpan='2'>{(this.state.errorQuantity)? 'Please, fill the filed':null}</td>
-                    </tr>
-                    <tr>
-                      <td><input type="button" value={'Save'} onClick={this.save} disabled={(!this.state.editStart) || (this.state.errorName || this.state.errorCost || this.state.errorURL || this.state.errorQuantity)}/>
-                      <input type='button' value={'Cancel'} onClick={this.cancel}/></td>
-                    </tr>
-               </Fragment>
-      }
-    });
+                                   colorProduct={this.state.colorProduct}>
+                      </Information>;
 
     let editProduct = <AddEdite products={this.state.products}
                                 edit={this.state.edit}
@@ -198,41 +157,10 @@ class Store extends React.Component {
                                 add={this.state.add}
                                 cbAddButton={this.addButton}
                                 cbAddCancel={this.addCancel}></AddEdite>;
-    let addProduct = <Fragment>
-                    <tr className='Info'><td colSpan='2'>Add new product</td></tr>
-                    <tr>
-                      <td colSpan='2'>{'Name:'}</td>
-                      <td><input type='text' value={this.state.name} onChange={this.changeName}/></td>
-                      <td className='Error' colSpan='2'>{(this.state.errorName)? 'Please, fill the filed':null}</td>
-                    </tr>
-                    <tr>
-                      <td colSpan='2'>{'Price:'}</td>
-                      <td><input type='text' value={this.state.cost} onChange={this.changeCost}/></td>
-                      <td className='Error' colSpan='2'>{(this.state.errorCost)? 'Please, fill the filed':null}</td>
-                    </tr>
-                    <tr>
-                      <td colSpan='2'>{'URL:'}</td>
-                      <td><input type='text' value={this.state.url} onChange={this.changeURL}/></td>
-                      <td className='Error' colSpan='2'>{(this.state.errorURL)? 'Please, fill the filed':null}</td>
-                    </tr>
-                    <tr>
-                      <td colSpan='2'>{'Quantity:'}</td>
-                      <td><input type='text' value={this.state.quantity} onChange={this.changeQuantity}/></td>
-                      <td className='Error' colSpan='2'>{(this.state.errorQuantity)? 'Please, fill the filed':null}</td>
-                    </tr>
-                    <tr>
-                      <td><input type="button" value={'Add'} onClick={this.addButton} disabled={this.state.errorName || this.state.errorCost || this.state.errorURL || this.state.errorQuantity}/>
-                      <input type='button' value={'Cancel'} onClick={this.addCancel}/></td>
-                    </tr>
-                  </Fragment>;
     return (
       <Fragment>
          <table>
-          <tbody className='Store'>{storeCode}{productCode}{add}
-                                   {((this.state.edit && (!this.state.add)) && edit)}
-                                   {((!this.state.edit) && (!this.state.add) && info)}
-                                   {(this.state.add) && addProduct}
-         </tbody>
+          <tbody className='Store'>{storeCode}{productCode}{add}</tbody>
          </table>
           {((!this.state.edit) && (!this.state.add) &&  <table>{information}</table>)}
           {((this.state.edit || (this.state.add)) && <table>{editProduct}</table>)}

@@ -30721,149 +30721,8 @@ var Store = function (_React$Component) {
         )
       );
 
-      var info = this.state.products.map(function (element) {
-        if (_this2.state.colorProduct === element.code) {
-          return _react2.default.createElement(
-            _react.Fragment,
-            { key: element.code },
-            _react2.default.createElement(
-              'tr',
-              { className: 'Info' },
-              _react2.default.createElement(
-                'td',
-                { colSpan: '2' },
-                element.name
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                null,
-                element.name
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                null,
-                'Price:',
-                element.cost
-              )
-            )
-          );
-        }
-      });
-
       var information = _react2.default.createElement(_Information2.default, { products: this.state.products,
         colorProduct: this.state.colorProduct });
-
-      var edit = this.state.products.map(function (element) {
-        if (_this2.state.edit === element.code) {
-          return _react2.default.createElement(
-            _react.Fragment,
-            { key: element.code },
-            _react2.default.createElement(
-              'tr',
-              { className: 'Info' },
-              _react2.default.createElement(
-                'td',
-                { colSpan: '3' },
-                'Edit existing Product'
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                { colSpan: '2' },
-                'Name:'
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'text', value: _this2.state.name, onChange: _this2.changeName })
-              ),
-              _react2.default.createElement(
-                'td',
-                { className: 'Error', colSpan: '2' },
-                _this2.state.errorName ? 'Please, fill the filed' : null
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                { colSpan: '2' },
-                'Price:'
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'text', value: _this2.state.cost, onChange: _this2.changeCost })
-              ),
-              _react2.default.createElement(
-                'td',
-                { className: 'Error', colSpan: '2' },
-                _this2.state.errorCost ? 'Please, fill the filed' : null
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                { colSpan: '2' },
-                'URL:'
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'text', value: _this2.state.url, onChange: _this2.changeURL })
-              ),
-              _react2.default.createElement(
-                'td',
-                { className: 'Error', colSpan: '2' },
-                _this2.state.errorURL ? 'Please, fill the filed' : null
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                { colSpan: '2' },
-                'Quantity:'
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'text', value: _this2.state.quantity, onChange: _this2.changeQuantity })
-              ),
-              _react2.default.createElement(
-                'td',
-                { className: 'Error', colSpan: '2' },
-                _this2.state.errorQuantity ? 'Please, fill the filed' : null
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'button', value: 'Save', onClick: _this2.save, disabled: !_this2.state.editStart || _this2.state.errorName || _this2.state.errorCost || _this2.state.errorURL || _this2.state.errorQuantity }),
-                _react2.default.createElement('input', { type: 'button', value: 'Cancel', onClick: _this2.cancel })
-              )
-            )
-          );
-        }
-      });
 
       var editProduct = _react2.default.createElement(_AddEdite2.default, { products: this.state.products,
         edit: this.state.edit,
@@ -30880,105 +30739,6 @@ var Store = function (_React$Component) {
         add: this.state.add,
         cbAddButton: this.addButton,
         cbAddCancel: this.addCancel });
-      var addProduct = _react2.default.createElement(
-        _react.Fragment,
-        null,
-        _react2.default.createElement(
-          'tr',
-          { className: 'Info' },
-          _react2.default.createElement(
-            'td',
-            { colSpan: '2' },
-            'Add new product'
-          )
-        ),
-        _react2.default.createElement(
-          'tr',
-          null,
-          _react2.default.createElement(
-            'td',
-            { colSpan: '2' },
-            'Name:'
-          ),
-          _react2.default.createElement(
-            'td',
-            null,
-            _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.changeName })
-          ),
-          _react2.default.createElement(
-            'td',
-            { className: 'Error', colSpan: '2' },
-            this.state.errorName ? 'Please, fill the filed' : null
-          )
-        ),
-        _react2.default.createElement(
-          'tr',
-          null,
-          _react2.default.createElement(
-            'td',
-            { colSpan: '2' },
-            'Price:'
-          ),
-          _react2.default.createElement(
-            'td',
-            null,
-            _react2.default.createElement('input', { type: 'text', value: this.state.cost, onChange: this.changeCost })
-          ),
-          _react2.default.createElement(
-            'td',
-            { className: 'Error', colSpan: '2' },
-            this.state.errorCost ? 'Please, fill the filed' : null
-          )
-        ),
-        _react2.default.createElement(
-          'tr',
-          null,
-          _react2.default.createElement(
-            'td',
-            { colSpan: '2' },
-            'URL:'
-          ),
-          _react2.default.createElement(
-            'td',
-            null,
-            _react2.default.createElement('input', { type: 'text', value: this.state.url, onChange: this.changeURL })
-          ),
-          _react2.default.createElement(
-            'td',
-            { className: 'Error', colSpan: '2' },
-            this.state.errorURL ? 'Please, fill the filed' : null
-          )
-        ),
-        _react2.default.createElement(
-          'tr',
-          null,
-          _react2.default.createElement(
-            'td',
-            { colSpan: '2' },
-            'Quantity:'
-          ),
-          _react2.default.createElement(
-            'td',
-            null,
-            _react2.default.createElement('input', { type: 'text', value: this.state.quantity, onChange: this.changeQuantity })
-          ),
-          _react2.default.createElement(
-            'td',
-            { className: 'Error', colSpan: '2' },
-            this.state.errorQuantity ? 'Please, fill the filed' : null
-          )
-        ),
-        _react2.default.createElement(
-          'tr',
-          null,
-          _react2.default.createElement(
-            'td',
-            null,
-            _react2.default.createElement('input', { type: 'button', value: 'Add', onClick: this.addButton, disabled: this.state.errorName || this.state.errorCost || this.state.errorURL || this.state.errorQuantity }),
-            _react2.default.createElement('input', { type: 'button', value: 'Cancel', onClick: this.addCancel })
-          )
-        )
-      );
       return _react2.default.createElement(
         _react.Fragment,
         null,
@@ -30990,10 +30750,7 @@ var Store = function (_React$Component) {
             { className: 'Store' },
             storeCode,
             productCode,
-            add,
-            this.state.edit && !this.state.add && edit,
-            !this.state.edit && !this.state.add && info,
-            this.state.add && addProduct
+            add
           )
         ),
         !this.state.edit && !this.state.add && _react2.default.createElement(
@@ -32090,9 +31847,7 @@ var Product = function (_React$Component) {
             }
         }, _this.editProduct = function (eo) {
             eo.stopPropagation();
-            if (!_this.props.add) {
-                _this.props.cbEditProduct(_this.props.code, _this.props.name, _this.props.cost, _this.props.url, _this.props.quantity);
-            }
+            _this.props.cbEditProduct(_this.props.code, _this.props.name, _this.props.cost, _this.props.url, _this.props.quantity);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
@@ -32101,7 +31856,7 @@ var Product = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'tr',
-                { onClick: this.colorProduct, style: { backgroundColor: this.props.colorProduct === this.props.code && !this.props.add ? 'orange' : 'white' } },
+                { onClick: this.colorProduct, style: { backgroundColor: this.props.colorProduct === this.props.code ? 'orange' : 'white' } },
                 _react2.default.createElement(
                     'td',
                     { className: 'Product' },
@@ -32125,8 +31880,17 @@ var Product = function (_React$Component) {
                 _react2.default.createElement(
                     'td',
                     null,
-                    this.props.editStart || this.props.add ? _react2.default.createElement('input', { type: 'button', value: this.props.controlEd, className: 'Product', onClick: this.editProduct, disabled: true }) : _react2.default.createElement('input', { type: 'button', value: this.props.controlEd, className: 'Product', onClick: this.editProduct }),
-                    this.props.editStart || this.props.add ? _react2.default.createElement('input', { type: 'button', value: this.props.control, className: 'Product', onClick: this.deleteProduct, disabled: true }) : _react2.default.createElement('input', { type: 'button', value: this.props.control, className: 'Product', onClick: this.deleteProduct })
+                    this.props.editStart || this.props.add ? _react2.default.createElement(
+                        _react.Fragment,
+                        null,
+                        _react2.default.createElement('input', { type: 'button', value: this.props.controlEd, className: 'Product', onClick: this.editProduct, disabled: true }),
+                        _react2.default.createElement('input', { type: 'button', value: this.props.control, className: 'Product', onClick: this.deleteProduct, disabled: true })
+                    ) : _react2.default.createElement(
+                        _react.Fragment,
+                        null,
+                        _react2.default.createElement('input', { type: 'button', value: this.props.controlEd, className: 'Product', onClick: this.editProduct }),
+                        _react2.default.createElement('input', { type: 'button', value: this.props.control, className: 'Product', onClick: this.deleteProduct })
+                    )
                 )
             );
         }
@@ -32205,7 +31969,6 @@ var Information = function (_React$Component) {
 
             var info = this.props.products.map(function (element) {
                 if (_this2.props.colorProduct === element.code) {
-                    console.log(1);
                     return _react2.default.createElement(
                         'tbody',
                         { key: element.code },
