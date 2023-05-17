@@ -12,11 +12,14 @@ class BrBlock extends React.Component {
    let array = this.props.text.split(reg);
    let br = <br/>;
    let result = [];
-   for (let element of array) {
-      result.push(element);
-      result.push(br); 
-   }
-   return (<div>{result}</div>);
+   array.forEach((element, index) => {
+    if(index < array.length - 1) {
+      result.push(<Fragment key={index}>{element}{br}</Fragment>)
+    } else {
+      result.push(<Fragment key={index}>{element}</Fragment>)
+    }
+   });
+   return result;
  }
 }
 

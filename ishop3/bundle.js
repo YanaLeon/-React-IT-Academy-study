@@ -369,40 +369,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-
-module.exports = ReactPropTypesSecret;
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(13);
-} else {
-  module.exports = __webpack_require__(14);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -421,6 +387,40 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
   module.exports = __webpack_require__(24)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(13);
+} else {
+  module.exports = __webpack_require__(14);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -469,7 +469,7 @@ var _Store2 = _interopRequireDefault(_Store);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var storeArray = [{ name: 'Name', cost: 'Price', url: 'URL', quantity: 'Quantity', control: 'Control', id: 1 }];
-var productsArray = __webpack_require__(28);
+var productsArray = __webpack_require__(32);
 
 _reactDom2.default.render(_react2.default.createElement(_Store2.default, { store: storeArray, products: productsArray }), document.getElementById('container'));
 
@@ -2906,7 +2906,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),m=__webpack_require__(2),r=__webpack_require__(4);function y(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(y(227));var ba=new Set,ca={};function da(a,b){ea(a,b);ea(a+"Capture",b)}
+var aa=__webpack_require__(1),m=__webpack_require__(2),r=__webpack_require__(5);function y(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(y(227));var ba=new Set,ca={};function da(a,b){ea(a,b);ea(a+"Capture",b)}
 function ea(a,b){ca[a]=b;for(a=0;a<b.length;a++)ba.add(b[a])}
 var fa=!("undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement),ha=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,ia=Object.prototype.hasOwnProperty,
 ja={},ka={};function la(a){if(ia.call(ka,a))return!0;if(ia.call(ja,a))return!1;if(ha.test(a))return ka[a]=!0;ja[a]=!0;return!1}function ma(a,b,c,d){if(null!==c&&0===c.type)return!1;switch(typeof b){case "function":case "symbol":return!0;case "boolean":if(d)return!1;if(null!==c)return!c.acceptsBooleans;a=a.toLowerCase().slice(0,5);return"data-"!==a&&"aria-"!==a;default:return!1}}
@@ -3897,7 +3897,7 @@ if (process.env.NODE_ENV !== "production") {
 
 var React = __webpack_require__(1);
 var _assign = __webpack_require__(2);
-var Scheduler = __webpack_require__(4);
+var Scheduler = __webpack_require__(5);
 var tracing = __webpack_require__(16);
 
 var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
@@ -30548,7 +30548,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -30557,6 +30557,14 @@ __webpack_require__(25);
 var _Product = __webpack_require__(26);
 
 var _Product2 = _interopRequireDefault(_Product);
+
+var _Information = __webpack_require__(28);
+
+var _Information2 = _interopRequireDefault(_Information);
+
+var _AddEdite = __webpack_require__(30);
+
+var _AddEdite2 = _interopRequireDefault(_AddEdite);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30609,40 +30617,24 @@ var Store = function (_React$Component) {
       _this.setState({ colorProduct: code, edit: edit });
     }, _this.edit = function (code, name, cost, url, quantity) {
       _this.setState({ edit: code, colorProduct: code, name: name, cost: cost, url: url, quantity: quantity });
-    }, _this.changeName = function (eo) {
-      if (eo.target.value === '') {
-        _this.setState({ errorName: true, name: eo.target.value });
-      } else {
-        _this.setState({ name: eo.target.value, errorName: false, editStart: true });
-      }
-    }, _this.changeCost = function (eo) {
-      if (eo.target.value === '') {
-        _this.setState({ errorCost: true, cost: eo.target.value });
-      } else {
-        _this.setState({ cost: eo.target.value, errorCost: false, editStart: true });
-      }
-    }, _this.changeURL = function (eo) {
-      if (eo.target.value === '') {
-        _this.setState({ errorURL: true, url: eo.target.value });
-      } else {
-        _this.setState({ url: eo.target.value, errorURL: false, editStart: true });
-      }
-    }, _this.changeQuantity = function (eo) {
-      if (eo.target.value === '') {
-        _this.setState({ errorQuantity: true, quantity: eo.target.value });
-      } else {
-        _this.setState({ quantity: eo.target.value, errorQuantity: false, editStart: true });
-      }
-    }, _this.save = function () {
+    }, _this.changeName = function (start) {
+      _this.setState({ editStart: start });
+    }, _this.changeCost = function (start) {
+      _this.setState({ editStart: start });
+    }, _this.changeURL = function (start) {
+      _this.setState({ editStart: start });
+    }, _this.changeQuantity = function (start) {
+      _this.setState({ editStart: start });
+    }, _this.save = function (name, cost, url, quantity) {
       _this.state.products.map(function (element) {
         if (_this.state.edit === element.code) {
-          element.name = _this.state.name;
-          element.cost = _this.state.cost;
-          element.url = _this.state.url;
-          element.quantity = _this.state.quantity;
+          element.name = name;
+          element.cost = cost;
+          element.url = url;
+          element.quantity = quantity;
         }
       });
-      _this.setState({ name: '', cost: '', url: '', quantity: '', edit: null, editStart: false });
+      _this.setState({ edit: null, editStart: false });
     }, _this.cancel = function () {
       _this.state.products.map(function (element) {
         if (_this.state.edit === element.code) {
@@ -30651,16 +30643,16 @@ var Store = function (_React$Component) {
         }
       });
     }, _this.add = function () {
-      _this.setState({ add: true, name: '', cost: '', url: '', quantity: '', edit: null, colorProduct: null,
-        errorName: true, errorCost: true, errorURL: true, errorQuantity: true });
-    }, _this.addButton = function () {
-      _this.props.products.push({ name: _this.state.name, cost: _this.state.cost, url: _this.state.url,
-        quantity: _this.state.quantity, controlEd: "Edit", control: "Delete", code: Math.random() });
+      _this.setState({ add: true, name: '', cost: '', url: '', quantity: '', edit: null, colorProduct: null });
+    }, _this.addButton = function (name, cost, url, quantity, editPr, deletePr) {
+      _this.props.products.push({ name: name, cost: cost, url: url,
+        quantity: quantity, controlEd: editPr, control: deletePr, code: Math.random() });
       _this.setState({ products: _this.props.products, add: false, editStart: false,
         name: '', cost: '', url: '', quantity: '' });
-    }, _this.addCancel = function () {
-      _this.setState({ add: false, name: '', cost: '', url: '', quantity: '',
-        errorName: false, errorCost: false, errorURL: false, errorQuantity: false, editStart: false });
+    }, _this.addCancel = function (cancel) {
+      if (cancel) {
+        _this.setState({ add: false, name: '', cost: '', url: '', quantity: '', editStart: false });
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -30766,6 +30758,9 @@ var Store = function (_React$Component) {
         }
       });
 
+      var information = _react2.default.createElement(_Information2.default, { products: this.state.products,
+        colorProduct: this.state.colorProduct });
+
       var edit = this.state.products.map(function (element) {
         if (_this2.state.edit === element.code) {
           return _react2.default.createElement(
@@ -30870,6 +30865,21 @@ var Store = function (_React$Component) {
         }
       });
 
+      var editProduct = _react2.default.createElement(_AddEdite2.default, { products: this.state.products,
+        edit: this.state.edit,
+        editStart: this.state.editStart,
+        name: this.state.name,
+        cost: this.state.cost,
+        url: this.state.url,
+        quantity: this.state.quantity,
+        cbChangeName: this.changeName,
+        cbChangeCost: this.changeCost,
+        cbChangeURL: this.changeURL,
+        cbChangeQuantity: this.changeQuantity,
+        cbSave: this.save,
+        add: this.state.add,
+        cbAddButton: this.addButton,
+        cbAddCancel: this.addCancel });
       var addProduct = _react2.default.createElement(
         _react.Fragment,
         null,
@@ -30970,14 +30980,32 @@ var Store = function (_React$Component) {
         )
       );
       return _react2.default.createElement(
-        'tbody',
-        { className: 'Store' },
-        storeCode,
-        productCode,
-        add,
-        this.state.edit && !this.state.add && edit,
-        !this.state.edit && !this.state.add && info,
-        this.state.add && addProduct
+        _react.Fragment,
+        null,
+        _react2.default.createElement(
+          'table',
+          null,
+          _react2.default.createElement(
+            'tbody',
+            { className: 'Store' },
+            storeCode,
+            productCode,
+            add,
+            this.state.edit && !this.state.add && edit,
+            !this.state.edit && !this.state.add && info,
+            this.state.add && addProduct
+          )
+        ),
+        !this.state.edit && !this.state.add && _react2.default.createElement(
+          'table',
+          null,
+          information
+        ),
+        (this.state.edit || this.state.add) && _react2.default.createElement(
+          'table',
+          null,
+          editProduct
+        )
       );
     }
   }]);
@@ -31219,7 +31247,7 @@ exports.typeOf = typeOf;
 var ReactIs = __webpack_require__(6);
 var assign = __webpack_require__(2);
 
-var ReactPropTypesSecret = __webpack_require__(3);
+var ReactPropTypesSecret = __webpack_require__(4);
 var has = __webpack_require__(7);
 var checkPropTypes = __webpack_require__(23);
 
@@ -31837,7 +31865,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(3);
+  var ReactPropTypesSecret = __webpack_require__(4);
   var loggedTypeFailures = {};
   var has = __webpack_require__(7);
 
@@ -31945,7 +31973,7 @@ module.exports = checkPropTypes;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(3);
+var ReactPropTypesSecret = __webpack_require__(4);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -32026,7 +32054,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -32132,6 +32160,452 @@ exports.default = Product;
 
 /***/ }),
 /* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(3);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(29);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Information = function (_React$Component) {
+    _inherits(Information, _React$Component);
+
+    function Information() {
+        _classCallCheck(this, Information);
+
+        return _possibleConstructorReturn(this, (Information.__proto__ || Object.getPrototypeOf(Information)).apply(this, arguments));
+    }
+
+    _createClass(Information, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var info = this.props.products.map(function (element) {
+                if (_this2.props.colorProduct === element.code) {
+                    console.log(1);
+                    return _react2.default.createElement(
+                        'tbody',
+                        { key: element.code },
+                        _react2.default.createElement(
+                            'tr',
+                            { className: 'Info' },
+                            _react2.default.createElement(
+                                'td',
+                                { colSpan: '2' },
+                                element.name
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                element.name
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                'Price:',
+                                element.cost
+                            )
+                        )
+                    );
+                }
+            });
+
+            return info;
+        }
+    }]);
+
+    return Information;
+}(_react2.default.Component);
+
+Information.propTypes = {
+    products: _propTypes2.default.array.isRequired,
+    colorProduct: _propTypes2.default.any
+};
+exports.default = Information;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(3);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(31);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AddEdite = function (_React$Component) {
+  _inherits(AddEdite, _React$Component);
+
+  function AddEdite() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, AddEdite);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AddEdite.__proto__ || Object.getPrototypeOf(AddEdite)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      name: _this.props.name,
+      cost: _this.props.cost,
+      url: _this.props.url,
+      quantity: _this.props.quantity,
+      errorName: false,
+      errorCost: false,
+      errorURL: false,
+      errorQuantity: false
+    }, _this.changeName = function (eo) {
+      if (eo.target.value === '') {
+        _this.props.cbChangeName(false);
+        _this.setState({ errorName: true, name: eo.target.value });
+      } else {
+        _this.props.cbChangeName(true);
+        _this.setState({ errorName: false, name: eo.target.value });
+      }
+    }, _this.changeCost = function (eo) {
+      if (eo.target.value === '') {
+        _this.props.cbChangeCost(false);
+        _this.setState({ errorCost: true, cost: eo.target.value });
+      } else {
+        _this.props.cbChangeCost(true);
+        _this.setState({ errorCost: false, cost: eo.target.value });
+      }
+    }, _this.changeURL = function (eo) {
+      if (eo.target.value === '') {
+        _this.props.cbChangeURL(false);
+        _this.setState({ errorURL: true, url: eo.target.value });
+      } else {
+        _this.props.cbChangeURL(true);
+        _this.setState({ errorURL: false, url: eo.target.value });
+      }
+    }, _this.changeQuantity = function (eo) {
+      if (eo.target.value === '') {
+        _this.props.cbChangeQuantity(false);
+        _this.setState({ errorQuantity: true, quantity: eo.target.value });
+      } else {
+        _this.props.cbChangeQuantity(true);
+        _this.setState({ errorQuantity: false, quantity: eo.target.value });
+      }
+    }, _this.save = function () {
+      _this.props.cbSave(_this.state.name, _this.state.cost, _this.state.url, _this.state.quantity);
+      _this.setState({ name: '', cost: '', url: '', quantity: '' });
+    }, _this.cancel = function () {
+      _this.props.products.map(function (element) {
+        if (_this.props.edit === element.code) {
+          _this.setState({ name: element.name, cost: element.cost, url: element.url, quantity: element.quantity,
+            errorName: false, errorCost: false, errorURL: false, errorQuantity: false });
+        }
+      });
+    }, _this.componentDidUpdate = function (oldProps, oldState) {
+      console.log('componentDidUpdate');
+      if (oldProps.name !== _this.props.name || oldProps.cost !== _this.props.cost || oldProps.url !== _this.props.url || oldProps.quantity !== _this.props.quantity) _this.setState({ name: _this.props.name, cost: _this.props.cost, url: _this.props.url, quantity: _this.props.quantity });
+    }, _this.addProduct = function () {
+      _this.props.cbAddButton(_this.state.name, _this.state.cost, _this.state.url, _this.state.quantity, "Edit", "Delete");
+    }, _this.addCancel = function () {
+      _this.props.cbAddCancel(true);
+      _this.setState({ errorName: false, errorCost: false, errorURL: false, errorQuantity: false });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(AddEdite, [{
+    key: 'render',
+    value: function render() {
+      var component = void 0;
+      if (this.props.edit) {
+        component = _react2.default.createElement(
+          'tbody',
+          null,
+          _react2.default.createElement(
+            'tr',
+            { className: 'Info' },
+            _react2.default.createElement(
+              'td',
+              { colSpan: '3' },
+              'Edit existing Product'
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'Name:'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.changeName })
+            ),
+            _react2.default.createElement(
+              'td',
+              { className: 'Error', colSpan: '2' },
+              this.state.errorName ? 'Please, fill the filed' : null
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'Price:'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'text', value: this.state.cost, onChange: this.changeCost })
+            ),
+            _react2.default.createElement(
+              'td',
+              { className: 'Error', colSpan: '2' },
+              this.state.errorCost ? 'Please, fill the filed' : null
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'URL:'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'text', value: this.state.url, onChange: this.changeURL })
+            ),
+            _react2.default.createElement(
+              'td',
+              { className: 'Error', colSpan: '2' },
+              this.state.errorURL ? 'Please, fill the filed' : null
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'Quantity:'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'text', value: this.state.quantity, onChange: this.changeQuantity })
+            ),
+            _react2.default.createElement(
+              'td',
+              { className: 'Error', colSpan: '2' },
+              this.state.errorQuantity ? 'Please, fill the filed' : null
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'button', value: 'Save', onClick: this.save, disabled: !this.props.editStart || this.state.errorName || this.state.errorCost || this.state.errorURL || this.state.errorQuantity }),
+              _react2.default.createElement('input', { type: 'button', value: 'Cancel', onClick: this.cancel })
+            )
+          )
+        );
+      } else if (this.props.add) {
+        component = _react2.default.createElement(
+          'tbody',
+          null,
+          _react2.default.createElement(
+            'tr',
+            { className: 'Info' },
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'Add new product'
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'Name:'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.changeName })
+            ),
+            _react2.default.createElement(
+              'td',
+              { className: 'Error', colSpan: '2' },
+              this.state.errorName ? 'Please, fill the filed' : null
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'Price:'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'text', value: this.state.cost, onChange: this.changeCost })
+            ),
+            _react2.default.createElement(
+              'td',
+              { className: 'Error', colSpan: '2' },
+              this.state.errorCost ? 'Please, fill the filed' : null
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'URL:'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'text', value: this.state.url, onChange: this.changeURL })
+            ),
+            _react2.default.createElement(
+              'td',
+              { className: 'Error', colSpan: '2' },
+              this.state.errorURL ? 'Please, fill the filed' : null
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              { colSpan: '2' },
+              'Quantity:'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'text', value: this.state.quantity, onChange: this.changeQuantity })
+            ),
+            _react2.default.createElement(
+              'td',
+              { className: 'Error', colSpan: '2' },
+              this.state.errorQuantity ? 'Please, fill the filed' : null
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { type: 'button', value: 'Add', onClick: this.addProduct, disabled: !this.state.name || !this.state.cost || !this.state.url || !this.state.quantity || this.state.errorName || this.state.errorCost || this.state.errorURL || this.state.errorQuantity }),
+              _react2.default.createElement('input', { type: 'button', value: 'Cancel', onClick: this.addCancel })
+            )
+          )
+        );
+      }
+      return component;
+    }
+  }]);
+
+  return AddEdite;
+}(_react2.default.Component);
+
+AddEdite.propTypes = {
+  products: _propTypes2.default.array.isRequired,
+  edit: _propTypes2.default.any,
+  editStart: _propTypes2.default.bool.isRequired,
+  name: _propTypes2.default.string.isRequired,
+  cost: _propTypes2.default.any.isRequired,
+  url: _propTypes2.default.string.isRequired,
+  quantity: _propTypes2.default.any.isRequired,
+  cbChangeName: _propTypes2.default.func.isRequired,
+  cbChangeCost: _propTypes2.default.func.isRequired,
+  cbChangeURL: _propTypes2.default.func.isRequired,
+  cbChangeQuantity: _propTypes2.default.func.isRequired,
+  cbSave: _propTypes2.default.func.isRequired,
+  add: _propTypes2.default.bool.isRequired,
+  cbAddButton: _propTypes2.default.func.isRequired,
+  cbAddCancel: _propTypes2.default.func.isRequired
+};
+exports.default = AddEdite;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = [{"name":"oven","cost":1200,"url":"https://catalog.onliner.by","quantity":2,"controlEd":"Edit","control":"Delete","code":1},{"name":"dishwasher","cost":1500,"url":"https://tovar.by","quantity":1,"controlEd":"Edit","control":"Delete","code":2},{"name":"coffee machine","cost":2500,"url":"https://tex.by","quantity":2,"controlEd":"Edit","control":"Delete","code":3},{"name":"washing machine","cost":2500,"url":"https://product.by","quantity":6,"controlEd":"Edit","control":"Delete","code":4}]

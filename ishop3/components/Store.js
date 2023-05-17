@@ -4,6 +4,8 @@ import PropTypes, { element } from 'prop-types';
 import './Store.css';
 
 import Product from './Product';
+import Information from './Information';
+import AddEdite from './AddEdite';
 
 class Store extends React.Component {
   static propTypes = {
@@ -48,48 +50,32 @@ class Store extends React.Component {
     this.setState ({edit: code, colorProduct: code, name: name, cost: cost, url: url, quantity: quantity})
   };
 
-  changeName = (eo) => {
-    if (eo.target.value === '') {
-      this.setState({errorName: true, name: eo.target.value})
-    } else {
-      this.setState({name: eo.target.value, errorName: false, editStart: true});
-    }
+  changeName = (start) => {
+    this.setState({editStart: start});
   };
 
-  changeCost = (eo) => {
-    if (eo.target.value === '') {
-      this.setState({errorCost: true, cost: eo.target.value})
-    } else {
-      this.setState({cost: eo.target.value, errorCost: false, editStart: true})
-    }
+  changeCost = (start) => {
+    this.setState({editStart: start});
   };
 
-  changeURL = (eo) => {
-    if (eo.target.value === '') {
-      this.setState({errorURL: true, url: eo.target.value})
-    } else {
-      this.setState({url: eo.target.value, errorURL: false, editStart: true})
-    }
+  changeURL = (start) => {
+    this.setState({editStart: start});
   };
 
-  changeQuantity = (eo) => {
-    if (eo.target.value === '') {
-      this.setState({errorQuantity: true, quantity: eo.target.value})
-    } else {
-      this.setState({quantity: eo.target.value, errorQuantity: false, editStart: true})
-    }
+  changeQuantity = (start) => {
+    this.setState({editStart: start});
   };
 
-  save = () => {
+  save = (name, cost, url, quantity) => {
     this.state.products.map(element => {
       if (this.state.edit === element.code) {
-          element.name = this.state.name;
-          element.cost = this.state.cost;
-          element.url = this.state.url;
-          element.quantity = this.state.quantity;
+          element.name = name;
+          element.cost = cost;
+          element.url = url;
+          element.quantity = quantity;
       }
     })
-    this.setState({name: '', cost: '', url: '', quantity: '', edit: null, editStart: false})
+    this.setState({edit: null, editStart: false})
   };
 
   cancel = () => {
@@ -102,20 +88,20 @@ class Store extends React.Component {
   };
 
   add = () => {
-    this.setState({add: true, name: '', cost: '', url: '', quantity: '', edit: null, colorProduct: null, 
-      errorName: true, errorCost: true, errorURL: true, errorQuantity: true})
+    this.setState({add: true, name: '', cost: '', url: '', quantity: '', edit: null, colorProduct: null})
   };
 
-  addButton = () => {
-    this.props.products.push({name: this.state.name, cost: this.state.cost, url: this.state.url,
-    quantity: this.state.quantity, controlEd: "Edit", control: "Delete", code: Math.random()});
+  addButton = (name, cost, url, quantity, editPr, deletePr) => {
+    this.props.products.push({name: name, cost: cost, url: url,
+    quantity: quantity, controlEd: editPr, control: deletePr, code: Math.random()});
     this.setState({products: this.props.products, add: false, editStart: false, 
       name: '', cost: '', url: '', quantity: ''})
   };
 
-  addCancel = () => {
-    this.setState({add: false, name: '', cost: '', url: '', quantity: '',
-    errorName: false, errorCost: false, errorURL: false, errorQuantity: false, editStart: false})
+  addCancel = (cancel) => {
+    if(cancel) {
+      this.setState({add: false, name: '', cost: '', url: '', quantity: '', editStart: false})
+    }
   };
 
   render () {
@@ -162,6 +148,9 @@ class Store extends React.Component {
       }
     });
 
+    let information = <Information products={this.state.products}
+                                   colorProduct={this.state.colorProduct}></Information>;
+
     let edit = this.state.products.map(element => {
       if(this.state.edit === element.code) {
         return <Fragment key={element.code}>
@@ -194,6 +183,21 @@ class Store extends React.Component {
       }
     });
 
+    let editProduct = <AddEdite products={this.state.products}
+                                edit={this.state.edit}
+                                editStart={this.state.editStart}
+                                name={this.state.name}
+                                cost={this.state.cost}
+                                url={this.state.url}
+                                quantity={this.state.quantity}
+                                cbChangeName={this.changeName}
+                                cbChangeCost={this.changeCost}
+                                cbChangeURL={this.changeURL}
+                                cbChangeQuantity={this.changeQuantity}
+                                cbSave={this.save}
+                                add={this.state.add}
+                                cbAddButton={this.addButton}
+                                cbAddCancel={this.addCancel}></AddEdite>;
     let addProduct = <Fragment>
                     <tr className='Info'><td colSpan='2'>Add new product</td></tr>
                     <tr>
@@ -222,10 +226,17 @@ class Store extends React.Component {
                     </tr>
                   </Fragment>;
     return (
-    <tbody className='Store'>{storeCode}{productCode}{add}
-    {((this.state.edit && (!this.state.add)) && edit)} 
-    {((!this.state.edit) && (!this.state.add) && info)}
-    {(this.state.add) && addProduct}</tbody>
+      <Fragment>
+         <table>
+          <tbody className='Store'>{storeCode}{productCode}{add}
+                                   {((this.state.edit && (!this.state.add)) && edit)}
+                                   {((!this.state.edit) && (!this.state.add) && info)}
+                                   {(this.state.add) && addProduct}
+         </tbody>
+         </table>
+          {((!this.state.edit) && (!this.state.add) &&  <table>{information}</table>)}
+          {((this.state.edit || (this.state.add)) && <table>{editProduct}</table>)}
+      </Fragment>
     )
    
   }
