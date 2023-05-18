@@ -32079,7 +32079,6 @@ var AddEdite = function (_React$Component) {
       errorQuantity: false
     }, _this.changeName = function (eo) {
       if (eo.target.value === '') {
-        _this.props.cbChangeName(false);
         _this.setState({ errorName: true, name: eo.target.value });
       } else {
         _this.props.cbChangeName(true);
@@ -32087,7 +32086,6 @@ var AddEdite = function (_React$Component) {
       }
     }, _this.changeCost = function (eo) {
       if (eo.target.value === '') {
-        _this.props.cbChangeCost(false);
         _this.setState({ errorCost: true, cost: eo.target.value });
       } else {
         _this.props.cbChangeCost(true);
@@ -32095,7 +32093,6 @@ var AddEdite = function (_React$Component) {
       }
     }, _this.changeURL = function (eo) {
       if (eo.target.value === '') {
-        _this.props.cbChangeURL(false);
         _this.setState({ errorURL: true, url: eo.target.value });
       } else {
         _this.props.cbChangeURL(true);
@@ -32103,7 +32100,6 @@ var AddEdite = function (_React$Component) {
       }
     }, _this.changeQuantity = function (eo) {
       if (eo.target.value === '') {
-        _this.props.cbChangeQuantity(false);
         _this.setState({ errorQuantity: true, quantity: eo.target.value });
       } else {
         _this.props.cbChangeQuantity(true);

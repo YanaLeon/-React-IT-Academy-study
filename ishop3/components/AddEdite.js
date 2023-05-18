@@ -19,7 +19,8 @@ class AddEdite extends React.Component {
         cbSave: PropTypes.func.isRequired,
         add: PropTypes.bool.isRequired,
         cbAddButton: PropTypes.func.isRequired,
-        cbAddCancel: PropTypes.func.isRequired
+        cbAddCancel: PropTypes.func.isRequired,
+        cbCancel: PropTypes.func.isRequired
     };
 
     state = {
@@ -75,6 +76,7 @@ class AddEdite extends React.Component {
       };
     
       cancel = () => {
+        this.props.cbCancel(false)
         this.props.products.map(element => {
             if(this.props.edit === element.code) {
               this.setState({name: element.name, cost: element.cost, url: element.url, quantity: element.quantity,

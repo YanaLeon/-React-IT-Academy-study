@@ -42,8 +42,8 @@ class Store extends React.Component {
     }
   };
 
-  colorProduct = (code, edit) => {
-    this.setState( {colorProduct: code, edit: edit} );
+  colorProduct = (code, edit, name, cost) => {
+    this.setState( {colorProduct: code, edit: edit, name: name, cost: cost} );
   }; 
 
   edit = (code, name, cost, url, quantity) => {
@@ -78,17 +78,12 @@ class Store extends React.Component {
     this.setState({edit: null, editStart: false})
   };
 
-  cancel = () => {
-    this.state.products.map(element => {
-      if(this.state.edit === element.code) {
-        this.setState({name: element.name, cost: element.cost, url: element.url, quantity: element.quantity,
-          errorName: false, errorCost: false, errorURL: false, errorQuantity: false})
-      }
-    })
-  };
-
   add = () => {
     this.setState({add: true, name: '', cost: '', url: '', quantity: '', edit: null, colorProduct: null})
+  };
+
+  cancel = (start) => {
+    this.setState({editStart: start})
   };
 
   addButton = (name, cost, url, quantity, editPr, deletePr) => {
@@ -138,8 +133,8 @@ class Store extends React.Component {
                 </td>
               </tr>;
 
-    let information = <Information products={this.state.products}
-                                   colorProduct={this.state.colorProduct}>
+    let information = <Information name={this.state.name}
+                                   cost={this.state.cost}>
                       </Information>;
 
     let editProduct = <AddEdite products={this.state.products}
@@ -156,13 +151,14 @@ class Store extends React.Component {
                                 cbSave={this.save}
                                 add={this.state.add}
                                 cbAddButton={this.addButton}
-                                cbAddCancel={this.addCancel}></AddEdite>;
+                                cbAddCancel={this.addCancel}
+                                cbCancel={this.cancel}></AddEdite>;
     return (
       <Fragment>
          <table>
           <tbody className='Store'>{storeCode}{productCode}{add}</tbody>
          </table>
-          {((!this.state.edit) && (!this.state.add) &&  <table>{information}</table>)}
+          {((!this.state.edit) && (!this.state.add) && this.state.colorProduct && <table>{information}</table>)}
           {((this.state.edit || (this.state.add)) && <table>{editProduct}</table>)}
       </Fragment>
     )

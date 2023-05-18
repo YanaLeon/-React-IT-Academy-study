@@ -27,7 +27,7 @@ class Product extends React.Component {
 
     colorProduct = () => {
         if((!this.props.add) && (!this.props.editStart)) {
-            this.props.cbColorProduct(this.props.code, null);
+            this.props.cbColorProduct(this.props.code, null, this.props.name, this.props.cost,);
         }
     };
 
