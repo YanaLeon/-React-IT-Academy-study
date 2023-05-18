@@ -10,16 +10,16 @@ class BrBlock extends React.Component {
  render() {
    let reg = /<br\W*?\>/g;
    let array = this.props.text.split(reg);
-   let br = <br/>;
    let result = [];
    array.forEach((element, index) => {
     if(index < array.length - 1) {
-      result.push(<Fragment key={index}>{element}{br}</Fragment>)
+      result.push(element);
+      result.push(<br key={index}/>);
     } else {
-      result.push(<Fragment key={index}>{element}</Fragment>)
+      result.push(element)
     }
    });
-   return result;
+   return <div>{result}</div>;
  }
 }
 

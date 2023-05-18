@@ -9,18 +9,14 @@ class RainbowFrame extends React.Component {
   
 
   render() {
-    let arrayFrame = this.props.colors.reduce((acc, element, index) => {
+    let arrayFrame = this.props.colors.reduce((acc, element) => {
       return (
         <div style={{borderStyle: 'solid', borderWidth: '5px', borderColor: element, margin: '5px'}}>
-          {index === 0 ? this.props.children : acc}
+          {acc}
         </div>
       );
-    }, -1)
-    return (
-      <div>
-        {arrayFrame}
-      </div>
-    );
+    }, this.props.children)
+    return arrayFrame;
   }
 
 }
