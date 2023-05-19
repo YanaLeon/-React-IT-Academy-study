@@ -34,11 +34,7 @@ class Store extends React.Component {
     var answer = confirm ('Хотите удалить товар? Если да нажмите "ОК", если нет нажмите "Отмена"');
     if (answer) {
       this.setState( {deleteProduct: code} );
-      this.setState( {products: this.state.products.filter((element) => {
-          if (element.code !== code) {
-              return element;
-          }
-      })} );
+      this.setState( {products: this.state.products.filter(element => element.code !== code)} );
     }
   };
 
@@ -67,15 +63,33 @@ class Store extends React.Component {
   };
 
   save = (name, cost, url, quantity) => {
+    let editElement;
     this.state.products.map(element => {
       if (this.state.edit === element.code) {
-          element.name = name;
-          element.cost = cost;
-          element.url = url;
-          element.quantity = quantity;
+        editElement = element;
       }
     })
-    this.setState({edit: null, editStart: false})
+    for (let key in editElement) {
+      if (key === 'name') {
+        editElement[key] = name;
+      }
+      if (key === 'cost') {
+        editElement[key] = cost;
+      }
+      if (key === 'url') {
+        editElement[key] = url;
+      }
+      if (key === 'quantity') {
+        editElement[key] = quantity;
+      }
+    }
+    this.setState({edit: null, editStart: false, products: this.state.products.map(element => {
+      if (this.state.edit === element.code) {
+        element = editElement;
+      }
+      return element;
+    })})
+    console.log(this.props.products)
   };
 
   add = () => {

@@ -30613,8 +30613,8 @@ var Store = function (_React$Component) {
             }
           }) });
       }
-    }, _this.colorProduct = function (code, edit) {
-      _this.setState({ colorProduct: code, edit: edit });
+    }, _this.colorProduct = function (code, edit, name, cost) {
+      _this.setState({ colorProduct: code, edit: edit, name: name, cost: cost });
     }, _this.edit = function (code, name, cost, url, quantity) {
       _this.setState({ edit: code, colorProduct: code, name: name, cost: cost, url: url, quantity: quantity });
     }, _this.changeName = function (start) {
@@ -30635,15 +30635,10 @@ var Store = function (_React$Component) {
         }
       });
       _this.setState({ edit: null, editStart: false });
-    }, _this.cancel = function () {
-      _this.state.products.map(function (element) {
-        if (_this.state.edit === element.code) {
-          _this.setState({ name: element.name, cost: element.cost, url: element.url, quantity: element.quantity,
-            errorName: false, errorCost: false, errorURL: false, errorQuantity: false });
-        }
-      });
     }, _this.add = function () {
       _this.setState({ add: true, name: '', cost: '', url: '', quantity: '', edit: null, colorProduct: null });
+    }, _this.cancel = function (start) {
+      _this.setState({ editStart: start });
     }, _this.addButton = function (name, cost, url, quantity, editPr, deletePr) {
       _this.props.products.push({ name: name, cost: cost, url: url,
         quantity: quantity, controlEd: editPr, control: deletePr, code: Math.random() });
@@ -30721,8 +30716,8 @@ var Store = function (_React$Component) {
         )
       );
 
-      var information = _react2.default.createElement(_Information2.default, { products: this.state.products,
-        colorProduct: this.state.colorProduct });
+      var information = _react2.default.createElement(_Information2.default, { name: this.state.name,
+        cost: this.state.cost });
 
       var editProduct = _react2.default.createElement(_AddEdite2.default, { products: this.state.products,
         edit: this.state.edit,
@@ -30738,7 +30733,8 @@ var Store = function (_React$Component) {
         cbSave: this.save,
         add: this.state.add,
         cbAddButton: this.addButton,
-        cbAddCancel: this.addCancel });
+        cbAddCancel: this.addCancel,
+        cbCancel: this.cancel });
       return _react2.default.createElement(
         _react.Fragment,
         null,
@@ -30753,7 +30749,7 @@ var Store = function (_React$Component) {
             add
           )
         ),
-        !this.state.edit && !this.state.add && _react2.default.createElement(
+        !this.state.edit && !this.state.add && this.state.colorProduct && _react2.default.createElement(
           'table',
           null,
           information
@@ -31843,7 +31839,7 @@ var Product = function (_React$Component) {
             _this.props.cbProductDelete(_this.props.code);
         }, _this.colorProduct = function () {
             if (!_this.props.add && !_this.props.editStart) {
-                _this.props.cbColorProduct(_this.props.code, null);
+                _this.props.cbColorProduct(_this.props.code, null, _this.props.name, _this.props.cost);
             }
         }, _this.editProduct = function (eo) {
             eo.stopPropagation();
@@ -31965,44 +31961,38 @@ var Information = function (_React$Component) {
     _createClass(Information, [{
         key: 'render',
         value: function render() {
-            var _this2 = this;
-
-            var info = this.props.products.map(function (element) {
-                if (_this2.props.colorProduct === element.code) {
-                    return _react2.default.createElement(
-                        'tbody',
-                        { key: element.code },
-                        _react2.default.createElement(
-                            'tr',
-                            { className: 'Info' },
-                            _react2.default.createElement(
-                                'td',
-                                { colSpan: '2' },
-                                element.name
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'tr',
-                            null,
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                element.name
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'tr',
-                            null,
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'Price:',
-                                element.cost
-                            )
-                        )
-                    );
-                }
-            });
+            var info = _react2.default.createElement(
+                'tbody',
+                { key: 1 },
+                _react2.default.createElement(
+                    'tr',
+                    { className: 'Info' },
+                    _react2.default.createElement(
+                        'td',
+                        { colSpan: '2' },
+                        this.props.name
+                    )
+                ),
+                _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        this.props.name
+                    )
+                ),
+                _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        'Price:',
+                        this.props.cost
+                    )
+                )
+            );
 
             return info;
         }
@@ -32012,8 +32002,8 @@ var Information = function (_React$Component) {
 }(_react2.default.Component);
 
 Information.propTypes = {
-    products: _propTypes2.default.array.isRequired,
-    colorProduct: _propTypes2.default.any
+    name: _propTypes2.default.string.isRequired,
+    cost: _propTypes2.default.any.isRequired
 };
 exports.default = Information;
 
@@ -32109,6 +32099,7 @@ var AddEdite = function (_React$Component) {
       _this.props.cbSave(_this.state.name, _this.state.cost, _this.state.url, _this.state.quantity);
       _this.setState({ name: '', cost: '', url: '', quantity: '' });
     }, _this.cancel = function () {
+      _this.props.cbCancel(false);
       _this.props.products.map(function (element) {
         if (_this.props.edit === element.code) {
           _this.setState({ name: element.name, cost: element.cost, url: element.url, quantity: element.quantity,
@@ -32353,7 +32344,8 @@ AddEdite.propTypes = {
   cbSave: _propTypes2.default.func.isRequired,
   add: _propTypes2.default.bool.isRequired,
   cbAddButton: _propTypes2.default.func.isRequired,
-  cbAddCancel: _propTypes2.default.func.isRequired
+  cbAddCancel: _propTypes2.default.func.isRequired,
+  cbCancel: _propTypes2.default.func.isRequired
 };
 exports.default = AddEdite;
 
