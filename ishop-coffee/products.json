@@ -1,0 +1,6 @@
+[
+    {"name": "Coffee 100% arabica", "foto": "images/Nicaragua.png", "cost": 20, "url": "http://coffeeservice.by/katalog-tovarov/kofe/cup-of-love/Cuo-of-Love-NICARAGUA.html", "country": "Nicaragua", "code": 1},
+    {"name": "Coffee 100% arabica", "foto": "images/Colombia.png", "cost": 23, "url": "http://coffeeservice.by/katalog-tovarov/kofe/cup-of-love/cup-of-love-colombia1.html", "country": "Colombia", "code": 2},
+    {"name": "Coffee 100% arabica", "foto": "images/Honduras.png", "cost": 25, "url": "http://coffeeservice.by/katalog-tovarov/kofe/cup-of-love/cup-honduras.html", "country": "Honduras", "code": 3},
+    {"name": "Coffee 100% arabica", "foto": "images/Brazil.png", "cost": 25, "url": "http://coffeeservice.by/katalog-tovarov/kofe/cup-of-love/cup-brazil.html", "country": "Brazil", "code": 4}
+]
