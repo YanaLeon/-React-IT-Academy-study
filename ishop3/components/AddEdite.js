@@ -76,13 +76,7 @@ class AddEdite extends React.Component {
       };
     
       cancel = () => {
-        this.props.cbCancel(false)
-        this.props.products.map(element => {
-            if(this.props.edit === element.code) {
-              this.setState({name: element.name, cost: element.cost, url: element.url, quantity: element.quantity,
-                errorName: false, errorCost: false, errorURL: false, errorQuantity: false})
-            }
-          })
+        this.props.cbCancel(false);
       };
       
       componentDidUpdate = (oldProps, oldState) => { 
@@ -126,7 +120,7 @@ class AddEdite extends React.Component {
             </tr>
             <tr>
               <td><input type="button" value={'Save'} onClick={this.save} disabled={(!this.props.editStart) || (this.state.errorName || this.state.errorCost || this.state.errorURL || this.state.errorQuantity)}/>
-              <input type='button' value={'Cancel'} onClick={this.cancel} disabled={!this.props.editStart}/></td>
+              <input type='button' value={'Cancel'} onClick={this.cancel} /></td>
             </tr>
            </tbody>
         } else if (this.props.add) {

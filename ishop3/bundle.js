@@ -30608,9 +30608,7 @@ var Store = function (_React$Component) {
       if (answer) {
         _this.setState({ deleteProduct: code });
         _this.setState({ products: _this.state.products.filter(function (element) {
-            if (element.code !== code) {
-              return element;
-            }
+            return element.code !== code;
           }) });
       }
     }, _this.colorProduct = function (code, edit, name, cost) {
@@ -30626,15 +30624,33 @@ var Store = function (_React$Component) {
     }, _this.changeQuantity = function (start) {
       _this.setState({ editStart: start });
     }, _this.save = function (name, cost, url, quantity) {
+      var editElement = void 0;
       _this.state.products.map(function (element) {
         if (_this.state.edit === element.code) {
-          element.name = name;
-          element.cost = cost;
-          element.url = url;
-          element.quantity = quantity;
+          editElement = element;
         }
       });
-      _this.setState({ edit: null, editStart: false });
+      for (var key in editElement) {
+        if (key === 'name') {
+          editElement[key] = name;
+        }
+        if (key === 'cost') {
+          editElement[key] = cost;
+        }
+        if (key === 'url') {
+          editElement[key] = url;
+        }
+        if (key === 'quantity') {
+          editElement[key] = quantity;
+        }
+      }
+      _this.setState({ edit: null, editStart: false, products: _this.state.products.map(function (element) {
+          if (_this.state.edit === element.code) {
+            element = editElement;
+          }
+          return element;
+        }) });
+      console.log(_this.props.products);
     }, _this.add = function () {
       _this.setState({ add: true, name: '', cost: '', url: '', quantity: '', edit: null, colorProduct: null });
     }, _this.cancel = function (start) {
@@ -32217,7 +32233,7 @@ var AddEdite = function (_React$Component) {
               'td',
               null,
               _react2.default.createElement('input', { type: 'button', value: 'Save', onClick: this.save, disabled: !this.props.editStart || this.state.errorName || this.state.errorCost || this.state.errorURL || this.state.errorQuantity }),
-              _react2.default.createElement('input', { type: 'button', value: 'Cancel', onClick: this.cancel })
+              _react2.default.createElement('input', { type: 'button', value: 'Cancel', onClick: this.cancel, disabled: !this.props.editStart })
             )
           )
         );

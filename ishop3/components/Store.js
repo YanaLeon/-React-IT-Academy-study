@@ -63,27 +63,19 @@ class Store extends React.Component {
   };
 
   save = (name, cost, url, quantity) => {
+    let productsClone = this.state.products.slice();
+    console.log(this.state.products === productsClone)
+    let change = {name: name, cost: cost, url: url, quantity: quantity}
     let editElement;
-    this.state.products.map(element => {
+    this.state.products.forEach(element => {
       if (this.state.edit === element.code) {
         editElement = element;
       }
-    })
-    for (let key in editElement) {
-      if (key === 'name') {
-        editElement[key] = name;
-      }
-      if (key === 'cost') {
-        editElement[key] = cost;
-      }
-      if (key === 'url') {
-        editElement[key] = url;
-      }
-      if (key === 'quantity') {
-        editElement[key] = quantity;
-      }
-    }
-    this.setState({edit: null, editStart: false, products: this.state.products.map(element => {
+    });
+    console.log(editElement);
+    editElement = {...editElement, ...change};
+    console.log(editElement)
+    this.setState({edit: null, editStart: false, products: productsClone.map(element => {
       if (this.state.edit === element.code) {
         element = editElement;
       }
@@ -97,7 +89,7 @@ class Store extends React.Component {
   };
 
   cancel = (start) => {
-    this.setState({editStart: start})
+    this.setState({edit: start, editStart: start})
   };
 
   addButton = (name, cost, url, quantity, editPr, deletePr) => {
