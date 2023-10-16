@@ -28,7 +28,7 @@ class Store extends React.Component {
                 
     return (
     <table>
-      <tbody className='Store'>{storeCode}{productCode}</tbody>
+      <tbody>{storeCode}{productCode}</tbody>
     </table>)
   }
 }
