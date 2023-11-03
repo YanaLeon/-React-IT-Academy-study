@@ -22,7 +22,7 @@ class Store extends React.Component {
   };
 
   selectProduct = (code, edit, name, cost, country) => {
-    this.setState({selectProductCode: code, name: name, cost: cost, country: country, edit: edit});
+    this.setState({selectProductCode: code, name: name, cost: cost, country: country, edit: edit, stop: false});
   };
 
   deleteProduct = (code) => {
@@ -41,9 +41,8 @@ class Store extends React.Component {
     this.setState({editStart: start});
   };
 
-  save = (code, name, cost, url, country) => {
+  save = (change) => {
     let productsClone = this.state.products.slice();
-    let change = {code: code, name: name, cost: cost, url: url, country: country};
     let elementEdit;
     this.state.products.forEach(element => {
       if(this.state.edit === element.code) {
@@ -51,7 +50,7 @@ class Store extends React.Component {
       }
     });
     elementEdit = {...elementEdit, ...change};
-    this.setState({selectProductCode: code, edit: null, editStart: false, name: name, cost: cost, url: url, country: country, stop: true,
+    this.setState({edit: null, editStart: false, stop: true,
       products: productsClone.map(element => {
       if(this.state.edit === element.code) {
         element = elementEdit;
@@ -69,8 +68,9 @@ class Store extends React.Component {
   };
 
   addProduct = (name, cost, url, country) => {
-    this.state.products.push({name: name, cost: cost, url: url, country: country, code: Math.random()});
-    this.setState({products: this.state.products, name: "", cost: "", url: "", country: "", add: false, editStart: false})
+    let products = this.state.products.slice();
+    products.push({name: name, cost: cost, url: url, country: country, code: Math.random()});
+    this.setState({products: products, name: "", cost: "", url: "", country: "", add: false, editStart: false})
   };
 
   addCancel = (cancel) => {

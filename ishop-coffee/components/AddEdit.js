@@ -50,7 +50,8 @@ class AddEdit extends React.Component {
      };
     
      save = (eo) => {
-         this.props.cbSave(this.props.edit, this.state.name, this.state.cost, this.state.url, this.state.country)
+        let change = {edit:this.props.edit, name: this.state.name, cost: this.state.cost, url: this.state.url, country: this.state.country}
+         this.props.cbSave(change)
      };
 
     componentDidUpdate = (oldProps, oldState) => {
