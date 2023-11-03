@@ -1,3 +1,10 @@
 .Product {
     border: solid gray 3px
 }
+.ProductURL {
+    width: 30%;
+    border: solid gray 3px
+}
+.Product input {
+    width: 50%;
+}

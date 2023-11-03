@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Store from './components/Store';
 
 let storeArray = [ 
-  {name:'Name', foto: "Foto", cost: 'Price', url: 'URL', country: "Country", id: 1}
+  {name:'Name', foto: "Foto", cost: 'Price', url: 'URL', country: "Country", control: "Control", id: 1}
 ];
 let productsArray = require('./products.json');
 
