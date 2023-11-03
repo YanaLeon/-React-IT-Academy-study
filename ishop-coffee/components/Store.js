@@ -69,8 +69,8 @@ class Store extends React.Component {
   };
 
   addProduct = (name, cost, url, country) => {
-    this.props.products.push({name: name, cost: cost, url: url, country: country, code: Math.random()});
-    this.setState({products: this.props.products, name: "", cost: "", url: "", country: "", add: false, editStart: false})
+    this.state.products.push({name: name, cost: cost, url: url, country: country, code: Math.random()});
+    this.setState({products: this.state.products, name: "", cost: "", url: "", country: "", add: false, editStart: false})
   };
 
   addCancel = (cancel) => {
