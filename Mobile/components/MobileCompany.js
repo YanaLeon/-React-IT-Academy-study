@@ -39,10 +39,8 @@ class MobileCompany extends React.PureComponent {
   };
   
   delete = (id) => {
-    let newClients = [...this.state.clients];
-    newClients = newClients.filter(client => {
-      let newClient = {...client};
-      return newClient.id !== id;
+    let newClients = this.state.clients.filter(client => {
+      return client.id !== id;
     });
     this.setState({clients: newClients})
   };
