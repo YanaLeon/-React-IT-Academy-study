@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
 import ToolsBar from "./ToolsBar";
 import BlockWithText from "./BlockWithText";
@@ -10,33 +10,35 @@ export default props => {
   const [sort, setSort] = useState(false);
   const [filter, setFilter] = useState("");
 
+  useEffect(
+    ()=>{
+      let newWordsArray;
+      if(copyWords) {
+        newWordsArray = [...copyWords];
+      } else {
+        newWordsArray = [...words];
+      }
+      if(sort) {
+        newWordsArray.sort();
+        setCopyWords([...props.words]);
+      }
+      if(filter) {
+        newWordsArray = newWordsArray.filter(word => word.includes(filter));
+        setCopyWords([...props.words]);
+      }
+      setWords(newWordsArray)
+    },
+    [sort, filter]
+  );
+
   function sortArray(check) {
-    change(check, filter)
     setSort(check);
   }
 
   function filterArray(value) {
-    change(sort, value)
     setFilter(value);
   }
 
-  function change (check, value) {
-    let newWordsArray;
-    if(copyWords) {
-      newWordsArray = [...copyWords];
-    } else {
-      newWordsArray = [...words];
-    }
-    if(check) {
-      newWordsArray.sort();
-      setCopyWords([...props.words]);
-    }
-    if(value) {
-      newWordsArray = newWordsArray.filter(word => word.includes(value));
-      setCopyWords([...props.words]);
-    }
-    setWords(newWordsArray)
-  }
   function resetFilter () {
     setWords(props.words);
     setSort(false);
