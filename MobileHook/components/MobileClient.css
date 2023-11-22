@@ -1,0 +1,16 @@
+﻿td.MobileClient
+{
+  border: solid gray 2px;
+}
+
+.active
+{
+  background-color: green;
+  border: solid gray 2px;
+}
+
+.blocked
+{
+  background-color: red;
+  border: solid gray 2px;
+}
