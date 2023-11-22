@@ -1,9 +1,6 @@
-﻿import React, { useState, useRef } from 'react';
-
-import "./ToolsBar.css";
+﻿import React from 'react';
 
 export default ({sort, filter, cbSortArray, cbFilterArray, cbResetFilter}) => {
-
 
   return (
     <div>

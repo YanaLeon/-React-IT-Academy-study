@@ -3,8 +3,6 @@
 import ToolsBar from "./ToolsBar";
 import BlockWithText from "./BlockWithText";
 
-import "./Filter.css";
-
 export default props => {
 
   const [words, setWords] = useState(props.words);
