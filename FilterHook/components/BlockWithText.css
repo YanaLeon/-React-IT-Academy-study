@@ -1,0 +1,11 @@
+.wordsBlock {
+    width: 300px;
+    height: 100px;
+    border: 1px solid gray;
+    overflow: scroll;
+    margin-top: 15px;
+}
+
+p {
+    margin: 0px;
+}
