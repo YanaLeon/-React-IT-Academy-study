@@ -21,9 +21,9 @@ const MobileClient = ({id, info}) => {
       <td className='MobileClient'>{info.im}</td>
       <td className='MobileClient'>{info.otch}</td>
       <td className='MobileClient'>{info.balance}</td>
-      <td className={info.status?"active":"blocked"}>{info.status?"active":"blocked"}</td>
-      <td className='MobileClient'><input type='button' value={info.edit} onClick={() => (edit())}/></td>
-      <td className='MobileClient'><input type='button' value={info.delete} onClick={() => (deleteClient())}/></td>
+      <td className={info.balance>0?"active":"blocked"}>{info.balance>0?"active":"blocked"}</td>
+      <td className='MobileClient'><input type='button' value={"Редактировать"} onClick={edit}/></td>
+      <td className='MobileClient'><input type='button' value={"Удалить"} onClick={deleteClient}/></td>
     </tr>
     );
 

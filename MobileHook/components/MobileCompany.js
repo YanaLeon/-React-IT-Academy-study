@@ -8,7 +8,6 @@ import './MobileCompany.css';
 
 const MobileCompany = props => {
 
-  const [name, setName] = useState(props.name);
   const [clients, setClients] = useState(props.clients);
   const [idEdit, setIdEdit] = useState(null);
   const [add, setAdd] = useState(false);
@@ -21,18 +20,12 @@ const MobileCompany = props => {
       companyEvents.addListener('EClentSave', change);
       companyEvents.addListener('EClentAdd', addClient);
       companyEvents.addListener('EClentCancelAddClient', cancel);
-      companyEvents.addListener('EClentAll', allClients);
-      companyEvents.addListener('EClentActive', active);
-      companyEvents.addListener('EClentBlock', blocked);
       return ()=>{
         companyEvents.removeListener('EClentDelete', deleteClient);
         companyEvents.removeListener('EClentEdit', edit);
         companyEvents.removeListener('EClentSave', change);
         companyEvents.removeListener('EClentAdd', addClient);
         companyEvents.removeListener('EClentCancelAddClient', cancel);
-        companyEvents.removeListener('EClentAll', allClients);
-        companyEvents.removeListener('EClentActive', active);
-        companyEvents.removeListener('EClentBlock', blocked);
       };
     },
     [clients]
@@ -58,7 +51,6 @@ const MobileCompany = props => {
            newClient.im = im;
            newClient.otch = otch;
            newClient.balance = balance;
-           newClient.status = balance>0?true:false;
            newClients[index] = newClient
        }
      });
@@ -72,7 +64,7 @@ const MobileCompany = props => {
  
    function addClient (fam, im, otch, balance) {
      let newClients = [...clients];
-     newClients.push({id: newClients.length+1, fam, im, otch, balance, status: balance>0?true:false, edit: "Редактировать", delete: "Удалить"});
+     newClients.push({id: Math.random(), fam, im, otch, balance});
      setClients(newClients);
      setAdd(false);
    };
@@ -80,18 +72,6 @@ const MobileCompany = props => {
    function cancel (cancelFlag) {
      setAdd(cancelFlag);
      setIdEdit(null);
-   };
- 
-   function allFilter () {
-     companyEvents.emit("EClentAll", true)
-   };
- 
-   function activFilter () {
-     companyEvents.emit("EClentActive", true)
-   };
- 
-   function blockFilter () {
-     companyEvents.emit("EClentBlock", true)
    };
  
    function allClients () {
@@ -108,12 +88,12 @@ const MobileCompany = props => {
  
     console.log("MobileCompany render")
     let filterBlock = <div>
-                  <input type = 'button' value = "Все" onClick={() => (allFilter())}/> 
-                  <input type = 'button' value = "Активные" onClick={() => (activFilter())}/>
-                  <input type = 'button' value = "Заблокированные" onClick={() => (blockFilter())}/>
+                  <input type = 'button' value = "Все" onClick={allClients}/> 
+                  <input type = 'button' value = "Активные" onClick={active}/>
+                  <input type = 'button' value = "Заблокированные" onClick={blocked}/>
                 </div>;
 
-    let nameCode = name.map(element => {
+    let nameCode = props.name.map(element => {
       return (
         <tr key={element.id}>
               <td className='MobileClient'>{element.fam}</td>
@@ -157,8 +137,7 @@ const MobileCompany = props => {
               </td>
             </tr>;
 
-  let newClientAdd = <MobileClientEditAdd 
-      key = {clients.length+1}
+  let newClientAdd = <MobileClientEditAdd
       add = {add} />;
 
     return (

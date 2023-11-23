@@ -33,17 +33,17 @@ const MobileClientEditAdd = ({id, info, add}) => {
       <td><input type = "text" defaultValue = "" ref={newOtch}/></td>
       <td><input type = "text" defaultValue = "" ref={newBalance}/></td>
       <td>{""}</td>
-      <td><input type='button' value="Добавить" onClick={() => (addClient())}/></td>
-      <td><input type='button' value="Отменить" onClick={() => (cancel())}/></td>
+      <td><input type='button' value="Добавить" onClick={addClient}/></td>
+      <td><input type='button' value="Отменить" onClick={cancel}/></td>
     </tr> :
     <tr>
     <td><input type = "text" defaultValue = {info.fam} ref={newFam}/></td>
     <td><input type = "text" defaultValue = {info.im} ref={newIm}/></td>
     <td><input type = "text" defaultValue = {info.otch} ref={newOtch}/></td>
     <td><input type = "text" defaultValue = {info.balance} ref={newBalance}/></td>
-    <td className={info.status?"active":"blocked"}>{info.status?"active":"blocked"}</td>
-    <td><input type='button' value="Сохранить" onClick={() => (change())}/></td>
-    <td><input type='button' value="Отменить" onClick={() => (cancel())}/></td>
+    <td className={info.balance>0?"active":"blocked"}>{info.balance>0?"active":"blocked"}</td>
+    <td><input type='button' value="Сохранить" onClick={change}/></td>
+    <td><input type='button' value="Отменить" onClick={cancel}/></td>
   </tr>
     );
 
