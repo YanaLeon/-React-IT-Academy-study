@@ -12,19 +12,12 @@ export default props => {
 
   useEffect(
     ()=>{
-      let newWordsArray;
-      if(copyWords) {
-        newWordsArray = [...copyWords];
-      } else {
-        newWordsArray = [...words];
-      }
+      let newWordsArray = [...props.words];
       if(sort) {
         newWordsArray.sort();
-        setCopyWords([...props.words]);
       }
       if(filter) {
         newWordsArray = newWordsArray.filter(word => word.includes(filter));
-        setCopyWords([...props.words]);
       }
       setWords(newWordsArray)
     },
