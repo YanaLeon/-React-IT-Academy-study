@@ -32,7 +32,6 @@ export default props => {
   }
 
   function resetFilter () {
-    setWords(props.words);
     setSort(false);
     setFilter("");
   }
