@@ -6,7 +6,6 @@ import BlockWithText from "./BlockWithText";
 export default props => {
 
   const [words, setWords] = useState(props.words);
-  const [copyWords, setCopyWords] = useState(null);
   const [sort, setSort] = useState(false);
   const [filter, setFilter] = useState("");
 
