@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useCallback } from 'react';
 
 import MobileClient from './MobileClient';
 import MobileClientEditAdd from './MobileClientEditAdd';
@@ -20,15 +20,21 @@ export const MobileCompany = props => {
   function deleteClient (id) {
     dispatch( clientDelete(id) );
   };
- 
+
+  const memoizedDeleteClient = useCallback( deleteClient, [] );
+
   function edit (id) {
     setIdEdit(id);
   };
- 
+
+  const memoizedEdit = useCallback( edit, [] );
+
   function change (id, fam, im, otch, balance) {
     dispatch(clientChange({id: id, fam: fam, im: im, otch: otch, balance: balance}))
     setIdEdit(null);
   };
+
+  const memoizedChange = useCallback( change, [] );
 
   function addCl () {
     setAdd(true);
@@ -43,6 +49,8 @@ export const MobileCompany = props => {
     setAdd(cancelFlag);
     setIdEdit(null);
   };
+
+  const memoizedCancel = useCallback( cancel, [] );
 
   function allClients () {
     setFilter(0);
@@ -93,14 +101,14 @@ export const MobileCompany = props => {
            id = {client.id}
            info = {client}
            add = {add}
-           cbChange = {change}
-           cbCancel = {cancel} />);
+           cbChange = {memoizedChange}
+           cbCancel = {memoizedCancel} />);
        } else {
         return (<MobileClient key = {client.id}
           id = {client.id}
           info = {client}
-          cbDelete = {deleteClient}
-          cbEdit = {edit} />);
+          cbDelete = {memoizedDeleteClient}
+          cbEdit = {memoizedEdit} />);
        }
       }
     );
