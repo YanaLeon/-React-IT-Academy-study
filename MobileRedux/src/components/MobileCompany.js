@@ -50,7 +50,7 @@ export const MobileCompany = props => {
     setIdEdit(null);
   };
 
-  const memoizedCancel = useCallback( cancel, [] );
+  const memoizedCancel = useCallback( cancel, [] )
 
   function allClients () {
     setFilter(0);
