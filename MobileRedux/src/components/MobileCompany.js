@@ -17,61 +17,36 @@ export const MobileCompany = props => {
   const clients = useSelector( state => state.clients ); 
   const dispatch = useDispatch();
 
-  function deleteClient (id) {
+  const deleteClient = useCallback( 
+    function deleteClient (id) {
     dispatch( clientDelete(id) );
-  };
+  }, [] );
 
-  const memoizedDeleteClient = useCallback( deleteClient, [] );
-
-  function edit (id) {
-    setIdEdit(id);
-  };
-
-  const memoizedEdit = useCallback( edit, [] );
-
-  function change (id, fam, im, otch, balance) {
+  const change = useCallback( 
+    function change (id, fam, im, otch, balance) {
     dispatch(clientChange({id: id, fam: fam, im: im, otch: otch, balance: balance}))
     setIdEdit(null);
-  };
-
-  const memoizedChange = useCallback( change, [] );
-
-  function addCl () {
-    setAdd(true);
-  };
+  }, [] );
 
   function addClient (fam, im, otch, balance) {
     dispatch(clientAdd({fam: fam, im: im, otch: otch, balance: balance}))
     setAdd(false);
   };
 
-  function cancel (cancelFlag) {
+  const cancel = useCallback( 
+    function cancel (cancelFlag) {
     setAdd(cancelFlag);
     setIdEdit(null);
-  };
-
-  const memoizedCancel = useCallback( cancel, [] )
-
-  function allClients () {
-    setFilter(0);
-  };
-
-  function active () {
-    setFilter(1);
-  };
-
-  function blocked () {
-    setFilter(2);
-  };
+  }, [] )
  
   console.log("MobileCompany render")
-    let filterBlock = <div>
-                  <input type = 'button' value = "Все" onClick={allClients}/> 
-                  <input type = 'button' value = "Активные" onClick={active}/>
-                  <input type = 'button' value = "Заблокированные" onClick={blocked}/>
-                </div>;
+  let filterBlock = <div>
+                      <input type = 'button' value = "Все" onClick={() => setFilter(0)}/> 
+                      <input type = 'button' value = "Активные" onClick={() => setFilter(1)}/>
+                      <input type = 'button' value = "Заблокированные" onClick={() => setFilter(2)}/>
+                    </div>;
 
-     let nameCode = props.name.map(element => {
+  let nameCode = props.name.map(element => {
        return (
          <tr key={element.id}>
                <td className='MobileClient'>{element.fam}</td>
@@ -83,9 +58,9 @@ export const MobileCompany = props => {
                <td className='MobileClient'>{element.delete}</td>
            </tr>
        )
-     })
+  });
 
-     let filterClients = clients.clientsMobile.filter(client => {
+  let filterClients = clients.clientsMobile.filter(client => {
        if (filter === 0) {
          return client;
        } else if (filter === 1) {
@@ -93,29 +68,29 @@ export const MobileCompany = props => {
        } else if (filter === 2) {
          return client.balance <= 0;
        }
-     });
+  });
 
-    let clientCode = filterClients.map( client => {
+  let clientCode = filterClients.map( client => {
        if (client.id === idEdit) {
          return (<MobileClientEditAdd key = {client.id}
            id = {client.id}
            info = {client}
            add = {add}
-           cbChange = {memoizedChange}
-           cbCancel = {memoizedCancel} />);
+           cbChange = {change}
+           cbCancel = {cancel} />);
        } else {
         return (<MobileClient key = {client.id}
           id = {client.id}
           info = {client}
-          cbDelete = {memoizedDeleteClient}
-          cbEdit = {memoizedEdit} />);
+          cbDelete = {deleteClient}
+          cbEdit = {setIdEdit} />);
        }
       }
-    );
+  );
 
   let addBlock = <tr>
               <td>
-                <input type = 'button' value = "Добавить клиента" onClick={addCl}/>
+                <input type = 'button' value = "Добавить клиента" onClick={() => setAdd(true)}/>
               </td>
             </tr>;
 

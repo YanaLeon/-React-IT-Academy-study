@@ -21,7 +21,7 @@ export const clientsSlice = createSlice({
     },
 
     clientChange: (state,action) => {
-      state = state.clientsMobile.forEach(client => {
+      state.clientsMobile.forEach(client => {
         if(client.id === action.payload.id) {
           client.fam = action.payload.fam;
           client.im = action.payload.im;
@@ -32,18 +32,9 @@ export const clientsSlice = createSlice({
     },
 
     clientAdd: (state,action) => {
-      let min = state.clientsMobile[0].id;
-      let max = min;
-      for (let i = 1; i < state.clientsMobile.length; ++i) {
-            if (state.clientsMobile[i].id > max) {
-              max = state.clientsMobile[i].id;
-            }
-            if (state.clientsMobile[i].id < min) {
-              min = state.clientsMobile[i].id
-            };
-      }
-      console.log(max)
-      state = state.clientsMobile.push({id: max + 1, fam: action.payload.fam, 
+      let arrayID = state.clientsMobile.map(client => client.id)
+      let maxID = Math.max.apply(null, [...arrayID]);
+      state = state.clientsMobile.push({id: maxID + 1, fam: action.payload.fam, 
       im: action.payload.im, otch: action.payload.otch, balance: action.payload.balance})
     }
 
