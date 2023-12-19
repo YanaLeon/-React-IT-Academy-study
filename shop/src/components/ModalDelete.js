@@ -1,28 +1,28 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { load, add } from "../redux/basketSlice.js";
+import { deleteBasket, load } from "../redux/basketSlice.js";
 import $ from 'jquery'; 
 
 import './Modal.css'
 
-export default function Modal() {
-    
+export default function ModalDelete() {
+
     const basket = useSelector( state => state.basket );
-    const addBasket = useSelector( state => state.basket.addBasket );
+    const deleteBasketBul = useSelector( state => state.basket.deleteBasketBul );
     const loaded = useSelector( state => state.basket.loaded );
     const dispatch = useDispatch();
 
     useEffect(() => {
-        basketUpdate();
-    }, [basket, addBasket]);
+        basketUpdateDelete();
+    }, [deleteBasketBul, basket, load]);
 
-    function basketUpdate() {
+    function basketUpdateDelete() {
     
         const ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
         const basketName = 'LEONOVICH_SHOP';
         let updatePassword = Math.random();
-
+        
         $.ajax( {
             url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
             data : { f : 'LOCKGET', n : basketName, p : updatePassword },
@@ -46,8 +46,8 @@ export default function Modal() {
             if ( callresult.error!=undefined ) {
                 console.log(callresult.error);
             } else {
-                dispatch(load(true))
-            }    
+                 dispatch(load(true))
+             }    
         }
 
         function errorHandler(jqXHR,statusStr,error) {
@@ -56,8 +56,8 @@ export default function Modal() {
     };
 
     function closeModal () {
-        dispatch(add(false));
-        dispatch(load(false))
+        dispatch( deleteBasket(false));
+        dispatch( load (false))
     }
 
     function modalWindowClick(eo) {
@@ -67,8 +67,8 @@ export default function Modal() {
   return (
     <div className={loaded?"SModalGlassGet":"SModalGlass"}>
         <div className="SModalWindow" onClick={modalWindowClick}>
-            <p className="SModalText">{loaded?"The product has been successfully added to the basket":"не успешно"}</p>
-            <input type="button" className="SModalInput" defaultValue={"Continue shopping"} onClick={closeModal}/>
+            <p className="SModalText">{loaded?"Product deleted successfully":"не успешно"}</p>
+            <input type="button" className="SModalInput" defaultValue={"Continue"} onClick={closeModal}/>
             </div>
     </div>
   )

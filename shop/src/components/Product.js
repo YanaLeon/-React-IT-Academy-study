@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { setProduct, add } from "../redux/basketSlice.js";
+
+import './Product.css';
 
 const Product = ({info}) => {
 
-  const basket = useSelector( state => state.basket );
   const dispatch = useDispatch();
-  const addBasket = useSelector( state => state.basket.addBasket );
   
 
   function addProductBasket () {
@@ -17,15 +16,13 @@ const Product = ({info}) => {
   }
 
   return (
-    // <NavLink to={"/product/:"+info.id}>
       <div className="Product">
         <img src = {"/image/" + info.img}/>
         <p className="name">{info.name}</p>
         <p className="description">{info.shortDescription}</p>
         <p className="cost">{info.cost}&euro;</p>
         {(info.quantity > 0)?<input type="button" className="add-to-cart" defaultValue={"+"} onClick={addProductBasket}/>:<p>Not available</p> }
-        </div>
-    // </NavLink>
+      </div>
   )
 }
 

@@ -1,70 +1,27 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { quantityAdd, quantityDelete } from "../redux/basketSlice.js";
-import { getProduct } from "../redux/basketSlice.js";
+import { quantityAdd, quantityDelete, deleteProductRd, deleteBasket } from "../redux/basketSlice.js";
+import { getLink } from "../redux/linkSlice.js";
 
-import $ from 'jquery';
+import './Basket.css';
 
 export default function Basket() {
-
+    
     const basket = useSelector( state => state.basket.basket );
     const quantityOrder = useSelector( state => state.basket.quantityOrder );
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch( getLink(1) );
+    }, []);
     
-    
-// function a () {
-//     let ajaxHandlerScript = "https://fe.it-academy.by/AjaxStringStorage2.php";
-//     let basketName = 'LEONOVICH_SHOP_BASKET';
-// 
-//     function restoreInfo() {
-//         $.ajax({
-//             url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-//             data : { f : 'READ', n : basketName },
-//             success : readReady, error : errorHandler
-//         });
-//     }
-//     restoreInfo();
-// 
-//     function readReady(callresult) {
-//         console.log(callresult)
-//         if ( callresult.error != undefined ) {
-//             console.log(callresult.error);
-//         } else if ( callresult.result != "" ) {
-//             let data = JSON.parse(callresult.result);
-//             dispatch( getProduct (data) );
-//             // console.log(info);
-//         }
-//     }
-//     function errorHandler(jqXHR,statusStr,errorStr) {
-//         console.log(errorStr);
-//     }
-// }
-
-
-let basketJSX;
-//     console.log(basket)
-//     if(basket) {
-//         basketJSX = basket.map((element, index) => {
-//             return (
-//                 <div key={element.id}>
-//                     <img src = {"/image/" + element.img}/>
-//                     <p className="name">{element.name}</p>
-//                     <p className="cost">{quantityOrder[index].cost}&euro;</p>
-//                     <input type="button" className="" defaultValue={"+"} onClick={(eo) => addProduct(element.id)} /*disabled={quantityOrder[index].quantity < element.quantity?false:true}*//>
-//                     {quantityOrder[index].id === element.id?<span>{quantityOrder[index].quantity}</span>:"ошибка"}
-//                     <input type="button" className="" defaultValue={"-"} onClick={(eo) => deleteProduct(element.id)} disabled={quantityOrder[index].quantity > 0?false:true}/>
-//                     <input type="button" className="" defaultValue={"Delete"}/>
-//                 </div>
-//             )
-//         })
-//     }
-// 
-//     console.log(basketJSX, basket.basket)
+    function deleteBasketProduct (id) {
+        dispatch( deleteProductRd (id) );
+        dispatch( deleteBasket (true) );
+    }
 
     function addProduct (id) {
-        console.log(id)
         dispatch( quantityAdd (id) );
     }
     
@@ -72,11 +29,35 @@ let basketJSX;
         dispatch( quantityDelete (id) );
     };
 
+    let basketJSX;
+    let costOrder = 0;
+    if(basket) {
+        basketJSX = basket.map((element, index) => {
+            costOrder += parseInt(quantityOrder[index].cost);
+            return (
+                <div className="wrapper-basket" key={element.id}>
+                    <img className="basket-img" src = {"/image/" + element.img} alt='product'/>
+                    <p className="basket-name">{element.name}</p>
+                    <p className="basket-cost">{quantityOrder[index].cost}&euro;</p>
+                    <input type="button" className="basket-add" defaultValue={"+"} onClick={(eo) => addProduct(element.id)} /*disabled={quantityOrder[index].quantity < element.quantity?false:true}*//>
+                    {quantityOrder[index].id === element.id?<span>{quantityOrder[index].quantity}</span>:"ошибка"}
+                    <input type="button" className="basket-delete" defaultValue={"-"} onClick={(eo) => deleteProduct(element.id)} disabled={quantityOrder[index].quantity <= 1?true:false}/>
+                    <input type="button" className="basket-delete-product" defaultValue={"Delete"} onClick={() => (deleteBasketProduct(element.id))}/>
+                </div>
+                )
+            })
+    }
+
+    let productOutBasketJSX = [<div key={551}><div>Cart is empty</div></div>];
+    let productInBasketJSX = [<div key={552}>
+                                {basketJSX}
+                                <p className="basket-text">Order price: {costOrder}</p>
+                                <input type="button" className="basket-checkout" defaultValue={"Checkout"}/>
+                              </div>];
+
   return (
-    <>
-    <div>Basket</div>
-    {(basket)?"Корзина пуста":basketJSX}
-    <input type="button" className="" defaultValue={"Checkout"}/>
-    </>
+    <div className="Basket">
+        {(!basket || basket.length === 0)?productOutBasketJSX:productInBasketJSX}
+    </div>
   )
 }

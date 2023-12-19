@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { basketLoad } from "../redux/basketLoad.js";
+
+import { FaShoppingCart } from "react-icons/fa";
+import BasketMin from '../components/BasketMin.js';
+
+import './PagesLinks.css';
 
 export const PagesLinks = () => {
 
+    const [cartOpen, setCartOpen] = useState(false);
+
     const number = useSelector( state => state.number );
     const basket = useSelector( state => state.basket.basket );
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch( basketLoad );
+    }, []);
           
     function getLinkClass(obj) {
       let className="PageLink";
@@ -15,20 +28,29 @@ export const PagesLinks = () => {
       }
       return className;
     }
-    
-    // dispatch( getLink(10) ); переходим на main или about us меняем state на 10, чтобы начинать всегда с первого списка
-   
+
     return (
-      <div className='wrapper-link-logo'>
-        <NavLink to="/" end className='logo-a'>
-            <img src='/image/logo.png' className='logo'/>
+      <>
+      <div className="wrapper-link-logoPageLink">
+        <NavLink to="/" end className="logo-aPageLink">
+            <img src='/image/logo.png' className="logoPageLink" alt="logo"/>
         </NavLink>
-        <div className='nav'>
+        <div className="navPageLink">
             <NavLink to="/" end    className={getLinkClass}>Main</NavLink>
             <NavLink to={"/products/:"+number.number} className={getLinkClass}>Products</NavLink>
-            <NavLink to="/basket" className={getLinkClass}>{basket.length > 0?"Basket"+basket.length:"Basket"}</NavLink>
+            <NavLink to="/basket" className={getLinkClass}>{
+                        basket && basket.length > 0?
+                        <>
+                         <FaShoppingCart className="shop-cartPageLink" onMouseEnter={() => {setCartOpen(true)}} onMouseLeave={() => {setCartOpen(false)}}/>
+                         <div className="product-numberPageLink">
+                          <span>{basket.length}</span>
+                          </div>
+                        </>:<FaShoppingCart onMouseEnter={() => {setCartOpen(true)}} onMouseLeave={() => {setCartOpen(false)}}/>}
+              </NavLink>
         </div>
+        {cartOpen?<BasketMin/>:null}
       </div>
+      </>
     );
 
 };

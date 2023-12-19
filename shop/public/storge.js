@@ -55,107 +55,58 @@ let productsArray = [
     {id: 52, category: "armchairs", name: "VIMLE", cost: "319", img: "Armchairs10.png", quantity: 6, shortDescription: "armchair, Hallarp beige", discription: "Frame: 100% polyester (min. 70% recycled), Polyurethane foam 20 kg/cu.m., Solid wood, Fibreboard, Plywood, Particleboard Seat cushion: 100% polyester (min. 70% recycled), Highly resilient polyurethane foam (cold foam) 35 kg/cu.m. Back cushion: 30% cut polyurethane foam/ 70% polyester fibres Leg: Polypropylene plastic Coated fabric parts: 100% polyurethane, 75% polyester, 25% cotton"}
 ];
 let basketArray = [];
+let mainArray = [
+    {"id": 1, "img": "Kitchen.jpeg", "discription": "Spending most of our time at home, we all probably long to enjoy an uplifting dinner in our favourite restaurant. So why not create the environment worthy the restaurant at home? It doesn't matter if it's a romantic dinner for two, a family celebration or a special occasion just for yourself. Our interior designer reveals what could help brighten up your daily life at home."},
+    {"id": 2, "img": "Bedroom.jpeg", "discription": "When so many spots in your home become alternative workspaces, it seems only fair to keep one corner for yourself. This relaxing bedroom has become a work-free sanctuary for the couple who call this loft apartment home. After the hustle and bustle of the workday, they can both look forward to winding down for a bit of cosy, cuddly time where the only task on the to-do list is getting a good night's rest."},
+    {"id": 3, "img": "Christmas.jpeg", "discription": "Waiting for the winter holidays, thinking about decorations and setting the mood at home brings so much fun! So why not extend the joy. Let's start preparing for Christmas in advance and make them last a bit longer."}
+];
 
-let ajaxHandlerScript = "https://fe.it-academy.by/AjaxStringStorage2.php";
+const ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
 let updatePassword;
-let products = 'LEONOVICH_SHOP_PRODUCTS';
-let basketName = 'LEONOVICH_SHOP';
+const products = 'LEONOVICH_SHOP_PRODUCTS';
+const basketName = 'LEONOVICH_SHOP';
+const main = 'LEONOVICH_SHOP_MAIN';
 
 // отправляем данные о продуктах
- function insert () {
-     updatePassword = Math.random();
-     let info = productsArray;
-     $.ajax({
-         url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-         data : { f : 'INSERT', n : products, 
-         v : JSON.stringify(info), p : updatePassword },
-         success : successInsert, error : errorHandler
-     });
- }
- 
- insert()
-
- // отправляем данные о корзине
- function insertBasket () {
-    updatePassword = Math.random();
-    let info = basketArray;
-    $.ajax({
-        url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-        data : { f : 'INSERT', n : basketName, 
-        v : JSON.stringify(info), p : updatePassword },
-        success : successInsert, error : errorHandler
-    });
-}
-
-insertBasket()
- 
- function successInsert (jqXHR,statusStr) {
-     console.log(statusStr)
- }
- 
- function errorHandler(jqXHR,statusStr,error) {
-     console.log(error);
- }
-
-// function send () {
-//     updatePassword = Math.random();
-//     $.ajax({
-//         url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-//         data : { f : 'LOCKGET', n : basket, p : updatePassword },
-//         success : lockGetReady, error : errorHandler
-//     });
+// function insert () {
+//      updatePassword=Math.random();
+//       $.ajax({
+//           url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+//           data : { f : 'INSERT', n : products, 
+//           v : JSON.stringify(productsArray), p : updatePassword },
+//           success : successInsert, error : errorHandler
+//       });
 // }
-// 
-// send()
-// function lockGetReady(callresult) {
-//     if ( callresult.error != undefined )
-//         console.log(callresult.error);
-//     else {
-//         let info = basketArray;
+// insert()
+
+// отправляем данные о корзине
+// function insertBasket () {
+//         updatePassword=Math.random();
 //         $.ajax({
 //             url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-//             data : { f : 'UPDATE', n : basket,
-//             v : JSON.stringify(info), p : updatePassword },
-//             success : updateReady, error : errorHandler
+//             data : { f : 'INSERT', n : basketName, 
+//             v : JSON.stringify(basketArray), p : updatePassword },
+//             success : successInsert, error : errorHandler
 //         });
-//     }
 // }
-// 
-// function updateReady(callresult) {
-//     if ( callresult.error != undefined ) {
-//         console.log(callresult.error);
-//     }
-// }
+// insertBasket()
 
-// читаем данные
-function restoreInfo() {
-    console.log(1)
-    $.ajax({
-        url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-        data : { f : 'READ', n : basket },
-        success : readReady, error : errorHandler
-    });
-}
-function readReady(callresult) {
-    console.log(callresult)
-    if ( callresult.error != undefined ) {
-        console.log(callresult.error);
-    } else if ( callresult.result != "" ) {
-        let info = JSON.parse(callresult.result);
-        console.log(info, 111);
-    }
+// отправляем данные о главной странице
+// function insertMain () {
+//     updatePassword=Math.random();
+//     $.ajax({
+//         url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+//          data : { f : 'INSERT', n : main, 
+//          v : JSON.stringify(mainArray), p : updatePassword },
+//          success : successInsert, error : errorHandler
+//         });
+//  }
+//  insertMain ()
+
+function successInsert (jqXHR,statusStr) {
+    console.log(statusStr)
 }
 
-// const beforeUnLoad = (e) => {
- //   storeProduct()
- //   e.preventDefault();
- //   e.stopPropagation();
- //   e.returnValue = 'tgyhjnk';
- // }
- // useEffect(() => {
- //   window.addEventListener('beforeunload', beforeUnLoad);
- //  
- //   return () => {
- //     window.removeEventListener('beforeunload', beforeUnLoad);
- //   };
- // }, []);
+function errorHandler(jqXHR,statusStr,errorStr) {
+    console.log(errorStr);
+}

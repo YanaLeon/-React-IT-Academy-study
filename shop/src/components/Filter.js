@@ -7,6 +7,8 @@ import { filterStockAction, filterCategoryAction, setData, filterPriceAction } f
 import { getLink } from "../redux/linkSlice.js";
 import { useNavigate } from "react-router-dom";
 
+import './Filter.css';
+
 export default function Filter() {
 
     const products = useSelector( state => state.products.products );

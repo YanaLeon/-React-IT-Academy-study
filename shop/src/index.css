@@ -19,7 +19,23 @@ body {
 a {
   text-decoration: none;
   color: #000000;
+  margin-right: 10px;
+  margin-left: 10px;
 }
+
+header {
+  position: relative;
+}
+
+.presentation {
+  margin: 50px 0;
+  background-image: url("./image/bg.jpeg");
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center center;
+}
+
 @media (max-width: 1600px) {
   .wrapper {
     max-width: 1280px;
@@ -35,12 +51,19 @@ a {
   .wrapper {
     max-width: 600px;
   }
+  .presentation {
+    height: 300px;
+  }
 }
 
 @media (max-width: 640px) {
   .wrapper {
-    max-width: 550px;
+    max-width: 400px;
     margin: 30px auto;
+  }
+  .presentation {
+    height: 250px;
+    margin: 25px 0;
   }
 }
 
@@ -49,285 +72,78 @@ a {
     max-width: 250px;
     margin: 20px auto;
   }
-}
-
-.nav {
-  float: right;
-}
-
-.logo {
-  width: 30%;
-}
-
-.logo-a {
-  margin-right: 0px;
-  margin-left: 0px;
-  width: 40%;
-}
-
-.wrapper-link-logo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-a {
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.PageLink {
-  font-size: 1.5rem;
-  color: black;
-  text-decoration: none;
-}
-
-.ActivePageLink {
-  font-size: 1.5rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: black;
-}
-
-.presentation {
-  margin: 50px 0;
-  background-image: url("./image/bg.jpeg");
-  width: 100%;
-  height: 500px;
-  background-size: cover;
-  background-position: center center;
-}
-
-@media (max-width: 1000px) {
-  .presentation {
-    height: 300px;
-  }
-  .PageLink {
-    font-size: 1.2rem;
-  }
-  .ActivePageLink {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .presentation {
-    height: 250px;
-  }
-  .PageLink {
-    font-size: 1rem;
-  }
-  .ActivePageLink {
-    font-size: 1rem;
-  }
-  .presentation {
-    margin: 25px 0;
-  }
-}
-
-@media (max-width: 420px) {
   .presentation {
     height: 150px;
-  }
-  .PageLink {
-    font-size: 0.6rem;
-  }
-  .ActivePageLink {
-    font-size: 0.6rem;
+    margin: 15px 0;
   }
   a {
     margin-right: 5px;
     margin-left: 5px;
   }
-  .presentation {
-    margin: 15px 0;
-  }
 }
-
-div.wrapper-main {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-div.wrapper-main .Product {
-  width: 30%;
-  margin: 5px 5px 50px 5px;
-  background-color: #faf1f1; 
-  border-radius: 9px; 
-  box-shadow: 3px 2px 1px lightgray;
-  padding: 10px;
-  overflow: hidden;
-  transition: 500ms ease;
-  position: relative;
-  padding-bottom: 20px;
-  text-align: center;
-}
-
-div.wrapper-main .Product:hover {
-  transform: scale(1.05);
-}
-
-div.wrapper-main .Product img{
-  width: 70%;
-}
-
-div.wrapper-main .Product .name{
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: left;
-}
-
-div.wrapper-main .Product .description{
-  font-size: 0.9rem;
-  text-align: left;
-}
-
-div.wrapper-main .Product .cost{
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #bd3838;
-  text-align: center;
-  padding-top: 10px;
-}
-
-div.wrapper-main .Product .add-to-cart{
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-  background: #bd3838;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none; 
-  outline: none;
-}
-
-.custom-checkbox {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-
-.custom-checkbox+label {
+.Footer-wrapper {
   display: inline-flex;
   align-items: center;
-  user-select: none;
-}
-.custom-checkbox+label::before {
-  content: '';
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  flex-shrink: 0;
-  flex-grow: 0;
-  border: 1px solid #adb5bd;
-  border-radius: 0.25em;
-  margin-right: 0.5em;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 50% 50%;
-}
-
-.filter{
-  display: flex;
-  align-content: center;
-  justify-content: space-between;
-}
-.filter span{
-  padding-right: 20px;
-}
-
-.custom-checkbox:checked+label::before {
-  border-color: #d17878;
-  background-color: #d17878;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-}
-.filter span {
+  width: 100%;
+  justify-content: center;
+  margin: 30px;
   font-size: 1.2rem;
+}
+
+.Footer-text {
+  font-size: 1.4rem;
   font-weight: 500;
 }
-label {
-  font-size: 1rem;
-}
 
-.custom-select {
-  border: 1px solid #adb5bd;
-  border-radius: 0.25em;
-  background-color: #eae0e0;
-  outline: none;
-  color: #444b51;
+@media (max-width: 1000px) {
+  .Footer-wrapper {
+    font-size: 1rem;
+  }
+  .Footer-text {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 640px) {
-  .filter span {
-    font-size: 1rem;
-  }
-  label {
+  .Footer-wrapper {
     font-size: 0.8rem;
+    margin: 10px;
   }
-  .filter span{
-    padding-right: 10px;
+  .Footer-text {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 420px) {
-  .filter span{
-    padding-right: 5px;
+  .Footer-wrapper {
+    font-size: 0.6rem;
+    margin: 0px;
   }
-  .filter span {
+  .Footer-text {
     font-size: 0.8rem;
   }
-  label {
-    font-size: 0.6rem;
+}
+
+.Basket {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .Basket {
+    font-size: 1.7rem;
   }
 }
 
-
-.SModalGlass {
-  display: none;
-  background-color: rgba(0,0,0,0.05);
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+@media (max-width: 640px) {
+  .Basket {
+    font-size: 1.5rem;
+  }
 }
 
-.SModalWindow {
-  padding: 25px 25px 25px 25px;
-  background-color: #ba8484;
-  width: 300px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  height: 15%;
-}
-.SModalGlassGet {
-  display: block;
-  background-color: rgb(52 34 34 / 15%);
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.SModalInput {
-  border: 1px solid #adb5bd;
-  border-radius: 0.25em;
-  background-color: #d17878;
-  outline: none;
-  color: #444b51;
-  width: 150px;
-  height: 30px;
-}
-
-.SModalText {
-  padding: 15px;
-  color: #444b51;
+@media (max-width: 420px) {
+  .Basket {
+    font-size: 1.2rem;
+  }
 }

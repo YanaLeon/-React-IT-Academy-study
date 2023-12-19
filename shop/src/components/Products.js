@@ -1,22 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { productsLoad } from "../redux/productsLoad.js";
 import { NavLink } from 'react-router-dom';
 import Product from './Product';
 import Filter from './Filter.js';
-import Modal from './Modal.js';
+
+import './Products.css';
 
 const Products = ({count}) => {
 
   const products = useSelector( state => state.products );
-  const dispatch = useDispatch();
-  
-
-  useEffect(() => {
-      dispatch( productsLoad );
-  }, []);
 
   let productsJSX = [];
   let arrayId = [];
@@ -29,7 +23,7 @@ const Products = ({count}) => {
     products.products.filter((element, index) => {
         if(arrayId.includes(index+1)) {
             return productsJSX.push(<Product key = {element.id}
-                                      info = {element} />);
+                                             info = {element} />);
         }
     })
 };

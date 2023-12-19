@@ -8,6 +8,6 @@ export const store = configureStore({
     reducer: {
         products: productsReducer,
         number: linkReducer,
-        basket: basketReducer,
+        basket: basketReducer
     }
 })

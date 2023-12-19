@@ -1,7 +1,7 @@
 import { readData } from "./productsSlice.js";
 
 import $ from 'jquery'; 
-export function productsLoad(dispatch) {
+export function productsLoad (dispatch) {
 
 let ajaxHandlerScript = "https://fe.it-academy.by/AjaxStringStorage2.php";
 let products = 'LEONOVICH_SHOP_PRODUCTS';
@@ -24,7 +24,7 @@ function readReady(callresult) {
 }
 
 function errorHandler(jqXHR,statusStr,errorStr) {
-    console.log(errorStr);
+    console.log(statusStr+' '+errorStr);
 }
 
 };
