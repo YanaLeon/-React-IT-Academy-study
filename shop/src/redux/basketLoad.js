@@ -6,6 +6,8 @@ export function basketLoad (dispatch) {
 
     const ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
     const basketName = 'LEONOVICH_SHOP';
+
+    console.log('render')
     
    
         $.ajax({

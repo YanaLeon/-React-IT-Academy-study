@@ -36,9 +36,15 @@ header {
   background-position: center center;
 }
 
+.wrapper {
+  max-width: 1500px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
 @media (max-width: 1600px) {
   .wrapper {
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 50px auto;
   }
 }
@@ -53,6 +59,12 @@ header {
   }
   .presentation {
     height: 300px;
+  }
+}
+
+@media (max-width: 800px) {
+  .wrapper {
+    max-width: 500px;
   }
 }
 

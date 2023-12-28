@@ -11,10 +11,11 @@ import { productsLoad } from "../redux/productsLoad.js";
 export default function PageProducts() {
 
     let divScroll = useRef(null);
+    const stock = useSelector( state => state.products.inStock);
 
     const params = useParams();
     const count = params.count;
-    let number = Number(count.slice(1));
+    let number = Number(count.slice(1, 2));
     
     const addBasket = useSelector( state => state.basket.addBasket );
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export default function PageProducts() {
 
   return (
     <main ref={divScroll}>
-        <Products count = {number}/>
+        <Products count = {number} />
         {addBasket?<Modal/>:null}
     </main>
   )

@@ -15,10 +15,10 @@ export default function Modal() {
 
     useEffect(() => {
         basketUpdate();
-    }, [basket, addBasket]);
+    }, []);
 
     function basketUpdate() {
-    
+
         const ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
         const basketName = 'LEONOVICH_SHOP';
         let updatePassword = Math.random();

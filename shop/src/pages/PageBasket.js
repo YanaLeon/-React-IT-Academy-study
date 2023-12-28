@@ -17,7 +17,7 @@ export default function PageBasket() {
     if(basket.length === 0) {
       dispatch( basketLoad );
     }
-  }, [dispatch]);
+  }, []);
 
   return (
     <>

@@ -15,7 +15,7 @@ export default function ModalDelete() {
 
     useEffect(() => {
         basketUpdateDelete();
-    }, [deleteBasketBul, basket, load]);
+    }, []);
 
     function basketUpdateDelete() {
     

@@ -9,7 +9,9 @@ export default function PagesRouter() {
   return (
     <Routes>
         <Route path="/" element={<PageMain/>} />
-        <Route path="/products/:count" element={<PageProducts/>}/>
+        <Route path="/products/:count" element={<PageProducts/>}>
+         <Route path="/products/:count/:filter/:category/:price" element={<PageProducts/>}/>
+         </Route>
         <Route path="/basket" element={<PageBasket/>} />
     </Routes>
   )
