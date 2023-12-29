@@ -18,6 +18,7 @@ export default function Filter() {
     const category = useSelector( state => state.products.category);
     const copy= useSelector( state => state.products.copy);
     const price = useSelector( state => state.products.price);
+    const number = useSelector( state => state.number.number );
 
     const dispatch = useDispatch();
     let navigate = useNavigate();
@@ -35,13 +36,11 @@ export default function Filter() {
     if(params.category) {
         filterCategoryURL = params.category.slice(1);
         dispatch( filterCategoryAction(filterCategoryURL) );
-        console.log(filterCategoryURL)
     }
     if(params.price) {
         filterPriceURL = params.price.slice(1);
         dispatch( filterPriceAction(filterPriceURL) );
     }
-    console.log(filterCategoryURL)
 
     useEffect(() => {
         
@@ -52,24 +51,28 @@ export default function Filter() {
                 newData = newData.filter(client => {
                     return client.quantity > 0;
                 })
+                dispatch( getLink (1) );
             }
             
             if(category !== "All") {
                 newData = newData.filter(client => {
                     return client.category === category;
                 });
+                dispatch( getLink (1) );
             }
             
             if(price === "ascending") {
                 newData = newData.sort((a, b) => {
                     return a.cost - b.cost
                 })
+                dispatch( getLink (1) );
             }
             
             if(price === "descending") {
                 newData = newData.sort((a, b) => {
                     return b.cost - a.cost
                 })
+                dispatch( getLink (1) );
             }
             
             dispatch( setData (newData) );
@@ -77,21 +80,20 @@ export default function Filter() {
     }, [stock, category, price, copy]);
 
     function filterStock (eo) {
-        console.log(category)
         dispatch( filterStockAction(eo.target.checked) );
-        uri = "/products/:1/:"+eo.target.checked+"/:"+category+"/:"+price;
+        uri = "/products/:"+number+"/:"+eo.target.checked+"/:"+category+"/:"+price;
         navigate(uri);
     };
 
     function filterCategory (eo) {
         dispatch( filterCategoryAction(eo.target.value) );
-        uri = "/products/:1/:"+stock+"/:"+eo.target.value+"/:"+price;
+        uri = "/products/:"+number+"/:"+stock+"/:"+eo.target.value+"/:"+price;
         navigate(uri);
     };
 
     function filterPrice (eo) {
         dispatch( filterPriceAction(eo.target.value) );
-        uri = "/products/:1/:"+stock+"/:"+category+"/:"+eo.target.value;
+        uri = "/products/:"+number+"/:"+stock+"/:"+category+"/:"+eo.target.value;
         navigate(uri);
      };
 

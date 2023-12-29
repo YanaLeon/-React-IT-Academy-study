@@ -11,6 +11,9 @@ import './Products.css';
 const Products = ({count}) => {
 
   const products = useSelector( state => state.products );
+  const stock = useSelector( state => state.products.inStock);
+  const category = useSelector( state => state.products.category);
+  const price = useSelector( state => state.products.price);
 
   let productsJSX = [];
   let arrayId = [];
@@ -47,11 +50,11 @@ if(products.products) {
         countLinksInteger = countLinks
     }
     for (let i = 1; i < countLinksInteger+1; i++) {
-        linksJSX.push(<span key={i}><NavLink to={"/products/:"+i} className={getLinkClass}>{i}</NavLink></span>);
+        linksJSX.push(<span key={i}><NavLink to={"/products/:"+i+"/:"+stock+"/:"+category+"/:"+price} className={getLinkClass}>{i}</NavLink></span>);
     }
     if(countLinks % 1) {
         countLinksInteger = countLinksInteger+1;
-        linksJSX.push(<span key={countLinksInteger}><NavLink to={"/products/:"+countLinksInteger} className={getLinkClass}>{countLinksInteger}</NavLink></span>);
+        linksJSX.push(<span key={countLinksInteger}><NavLink to={"/products/:"+countLinksInteger+"/:"+stock+"/:"+category+"/:"+price} className={getLinkClass}>{countLinksInteger}</NavLink></span>);
     }
 }
 

@@ -23,7 +23,6 @@ export default function PageProducts() {
     useEffect(() => {
       dispatch( productsLoad );
       divScroll.current.scrollIntoView({ block: "start", behavior: "smooth" });
-      dispatch( getLink(number) );
     }, [number]);
 
   return (
