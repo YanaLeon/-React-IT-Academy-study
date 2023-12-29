@@ -29,16 +29,16 @@ export default function Filter() {
     let filterCategoryURL;
     let filterPriceURL;
     if(params.filter) {
-        filterStockURL = JSON.parse(params.filter.slice(1, 6));
+        filterStockURL = JSON.parse(params.filter.slice(1));
         dispatch( filterStockAction(filterStockURL) );
     }
     if(params.category) {
-        filterCategoryURL = params.category.slice(1, 6);
+        filterCategoryURL = params.category.slice(1);
         dispatch( filterCategoryAction(filterCategoryURL) );
         console.log(filterCategoryURL)
     }
     if(params.price) {
-        filterPriceURL = params.price.slice(1, 15);
+        filterPriceURL = params.price.slice(1);
         dispatch( filterPriceAction(filterPriceURL) );
     }
     console.log(filterCategoryURL)
