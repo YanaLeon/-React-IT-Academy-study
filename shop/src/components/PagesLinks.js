@@ -17,6 +17,10 @@ export const PagesLinks = () => {
     const basket = useSelector( state => state.basket.basket );
     const dispatch = useDispatch();
 
+    const stock = useSelector( state => state.products.inStock);
+    const category = useSelector( state => state.products.category);
+    const price = useSelector( state => state.products.price);
+
     useEffect(() => {
       dispatch( basketLoad );
     }, []);
@@ -37,7 +41,7 @@ export const PagesLinks = () => {
         </NavLink>
         <div className="navPageLink">
             <NavLink to="/" end    className={getLinkClass}>Main</NavLink>
-            <NavLink to={"/products/:"+number.number} className={getLinkClass}>Products</NavLink>
+            <NavLink to={"/products/:"+number.number+"/:"+stock+"/:"+category+"/:"+price} className={getLinkClass}>Products</NavLink>
             <NavLink to="/basket" className={getLinkClass}>{
                         basket && basket.length > 0?
                         <>

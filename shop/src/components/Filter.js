@@ -23,7 +23,6 @@ export default function Filter() {
     let navigate = useNavigate();
 
     let uri;
-    console.log(category)
 
     const params = useParams();
     let filterStockURL;
@@ -36,15 +35,15 @@ export default function Filter() {
     if(params.category) {
         filterCategoryURL = params.category.slice(1, 6);
         dispatch( filterCategoryAction(filterCategoryURL) );
+        console.log(filterCategoryURL)
     }
     if(params.price) {
         filterPriceURL = params.price.slice(1, 15);
         dispatch( filterPriceAction(filterPriceURL) );
     }
+    console.log(filterCategoryURL)
 
     useEffect(() => {
-        const count = params.count;
-        let number = Number(count.slice(1, 2));
         
         if(products) {
             let newData = [...copy];
@@ -53,36 +52,24 @@ export default function Filter() {
                 newData = newData.filter(client => {
                     return client.quantity > 0;
                 })
-                dispatch( getLink (1) );
-                uri = "/products/:"+number+"/:"+stock+"/:"+category+"/:"+price;
-                navigate(uri);
             }
             
             if(category !== "All") {
                 newData = newData.filter(client => {
                     return client.category === category;
                 });
-                dispatch( getLink (1) );
-                uri = "/products/:"+number+"/:"+stock+"/:"+category+"/:"+price;
-                navigate(uri);
             }
             
             if(price === "ascending") {
                 newData = newData.sort((a, b) => {
                     return a.cost - b.cost
                 })
-                dispatch( getLink (1) );
-                uri = "/products/:"+number+"/:"+stock+"/:"+category+"/:"+price;
-                navigate(uri);
             }
             
             if(price === "descending") {
                 newData = newData.sort((a, b) => {
                     return b.cost - a.cost
                 })
-                dispatch( getLink (1) );
-                uri = "/products/:"+number+"/:"+stock+"/:"+category+"/:"+price;
-                navigate(uri);
             }
             
             dispatch( setData (newData) );
@@ -93,21 +80,18 @@ export default function Filter() {
         console.log(category)
         dispatch( filterStockAction(eo.target.checked) );
         uri = "/products/:1/:"+eo.target.checked+"/:"+category+"/:"+price;
-        filterStockURL = eo.target.checked;
         navigate(uri);
     };
 
     function filterCategory (eo) {
         dispatch( filterCategoryAction(eo.target.value) );
         uri = "/products/:1/:"+stock+"/:"+eo.target.value+"/:"+price;
-        filterCategoryURL = eo.target.value;
         navigate(uri);
     };
 
     function filterPrice (eo) {
         dispatch( filterPriceAction(eo.target.value) );
         uri = "/products/:1/:"+stock+"/:"+category+"/:"+eo.target.value;
-        filterPriceURL = eo.target.value;
         navigate(uri);
      };
 
