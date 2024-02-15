@@ -1,6 +1,7 @@
 {
   "name": "shop",
   "version": "0.1.0",
+  "homepage": "https://github.com/YanaLeon/React-IT-Academy-study",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
